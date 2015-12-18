@@ -1,0 +1,22 @@
+﻿<Application
+    x:Class="BalloonPop.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BalloonPop"
+    RequestedTheme="Light">
+    <Application.Resources>
+        <ImageSource x:Key="Background">/Images/Backgrounds/1.png</ImageSource>
+        <ImageSource x:Key="StandStill">/Images/Sprites/Player/default.png</ImageSource>
+        <ImageSource x:Key="WalkingLeft0">/Images/Sprites/Player/left0.png</ImageSource>
+        <ImageSource x:Key="WalkingLeft1">/Images/Sprites/Player/left1.png</ImageSource>
+        <ImageSource x:Key="WalkingLeft2">/Images/Sprites/Player/left2.png</ImageSource>
+        <ImageSource x:Key="WalkingLeft3">/Images/Sprites/Player/left3.png</ImageSource>
+        <ImageSource x:Key="WalkingRight0">/Images/Sprites/Player/right0.png</ImageSource>
+        <ImageSource x:Key="WalkingRight1">/Images/Sprites/Player/right1.png</ImageSource>
+        <ImageSource x:Key="WalkingRight2">/Images/Sprites/Player/right2.png</ImageSource>
+        <ImageSource x:Key="WalkingRight3">/Images/Sprites/Player/right3.png</ImageSource>
+        <ImageSource x:Key="Hook0">/Images/Sprites/Weapons/Hook/0.png</ImageSource>
+        <ImageSource x:Key="Hook1">/Images/Sprites/Weapons/Hook/1.png</ImageSource>
+    </Application.Resources>
+</Application>
+
