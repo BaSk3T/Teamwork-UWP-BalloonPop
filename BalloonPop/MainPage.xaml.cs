@@ -45,14 +45,16 @@ namespace BalloonPop
 
             this.Timer = new DispatcherTimer();
             this.Timer.Interval = TimeSpan.FromSeconds(1.0 / 25.0);
+
+            // Creates move animation
             this.Timer.Tick += (s, ev) =>
             {
-                if (this.GoingLeft)
+                if (this.GoingLeft && this.IsMoving)
                 {
                     this.ViewModel.MovePlayerLeft();
 
                 }
-                else if (!this.GoingLeft)
+                else if (!this.GoingLeft && this.IsMoving)
                 {
                     this.ViewModel.MovePlayerRight();
                 }
@@ -65,12 +67,17 @@ namespace BalloonPop
             {
                 e.Handled = true;
             }
-
+            
+            // Stops animation of player
             this.Timer.Stop();
             this.IsMoving = false;
+
+            // Resets player sprite
             this.ViewModel.SetPlayerSpriteStanding();
-            this.ViewModel.JoystickTop = 485;
-            this.ViewModel.JoystickLeft = 110;
+
+            // Returns touch of joystick to default position
+            this.ViewModel.JoystickTop = 330;
+            this.ViewModel.JoystickLeft = 70;
         }
 
         private void Grid_ManipulationDelta_1(object sender, ManipulationDeltaRoutedEventArgs e)
@@ -89,8 +96,9 @@ namespace BalloonPop
                 return;
             }
 
-            this.ViewModel.JoystickTop = y + 435;
-            this.ViewModel.JoystickLeft = x + 60;
+            //Moves touch of joystick to current location
+            this.ViewModel.JoystickTop = y + 290;
+            this.ViewModel.JoystickLeft = x + 20;
 
             if (0 <= x && x <= 35)
             {
@@ -129,7 +137,8 @@ namespace BalloonPop
                 return;
             }
 
-            this.ViewModel.SetHookPosition(this.ViewModel.PlayerVM.Left + 20, 645);
+            // Show and set position of projectile
+            this.ViewModel.SetHookPosition(this.ViewModel.PlayerVM.Left + 10, 390);
             this.Hook.Visibility = Visibility.Visible;
             this.CanFire = false;
 
@@ -138,17 +147,31 @@ namespace BalloonPop
 
             hookTimer.Tick += (ob, ev) =>
             {
+                // Updates position of projectile
                 this.ViewModel.UpdateHook();
+
+                // Destroys balloon if interacted with projectile
+                if (this.ViewModel.IsBalloonDestroyed())
+                {
+                    this.Balloon.Visibility = Visibility.Collapsed;
+                    this.StopHook(hookTimer);
+                }
 
                 if (this.ViewModel.HookVM.Top <= 0)
                 {
-                    hookTimer.Stop();
-                    this.Hook.Visibility = Visibility.Collapsed;
-                    this.CanFire = true;
+                    this.StopHook(hookTimer);
                 }
             };
 
             hookTimer.Start();
+        }
+
+        private void StopHook(DispatcherTimer hookTimer)
+        {
+            // Stops animation of projectile
+            hookTimer.Stop();
+            this.Hook.Visibility = Visibility.Collapsed;
+            this.CanFire = true;
         }
     }
 }

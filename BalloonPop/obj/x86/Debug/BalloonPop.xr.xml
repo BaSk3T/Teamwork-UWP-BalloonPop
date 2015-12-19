@@ -5,8 +5,13 @@
     <RootPropertyPathName Name="CurrentSprite" />
     <RootPropertyPathName Name="Left" />
     <RootPropertyPathName Name="Top" />
+    <RootPropertyPathName Name="HookWidth" />
+    <RootPropertyPathName Name="HookHeight" />
     <RootPropertyPathName Name="JoystickLeft" />
     <RootPropertyPathName Name="JoystickTop" />
+    <RootPropertyPathName Name="BlueBalloonVM" />
+    <RootPropertyPathName Name="Width" />
+    <RootPropertyPathName Name="Height" />
     <RootPropertyPathName Name="PlayerVM" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
@@ -32,17 +37,14 @@
       <RootProperty Name="Name" />
       <RootProperty Name="Fill" />
       <RootProperty Name="Opacity" />
-    </RootType>
-    <RootType FullName="BalloonPop.CustomControls.Joystick">
-      <RootProperty Name="Size" />
-      <RootProperty Name="TouchSize" />
-      <RootProperty Name="TouchLeftPosition" />
-      <RootProperty Name="TouchTopPosition" />
       <RootProperty Name="ManipulationMode" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Height" />
       <RootEvent Name="ManipulationStarted" />
       <RootEvent Name="ManipulationCompleted" />
       <RootEvent Name="ManipulationDelta" />
     </RootType>
+    <RootType FullName="BalloonPop.CustomControls.Joystick" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Content" />
     </RootType>
@@ -63,9 +65,7 @@
       <RootProperty Name="Name" />
       <RootProperty Name="Text" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Data.Binding">
-      <RootProperty Name="Mode" />
-    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Data.Binding" />
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension">
       <RootProperty Name="ResourceKey" />
     </RootType>

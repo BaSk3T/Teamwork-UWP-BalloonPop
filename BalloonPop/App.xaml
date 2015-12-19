@@ -5,7 +5,7 @@
     xmlns:local="using:BalloonPop"
     RequestedTheme="Light">
     <Application.Resources>
-        <ImageSource x:Key="Background">/Images/Backgrounds/1.png</ImageSource>
+        <ImageSource x:Key="Background">/Images/Backgrounds/desert.png</ImageSource>
         <ImageSource x:Key="StandStill">/Images/Sprites/Player/default.png</ImageSource>
         <ImageSource x:Key="WalkingLeft0">/Images/Sprites/Player/left0.png</ImageSource>
         <ImageSource x:Key="WalkingLeft1">/Images/Sprites/Player/left1.png</ImageSource>
@@ -17,5 +17,6 @@
         <ImageSource x:Key="WalkingRight3">/Images/Sprites/Player/right3.png</ImageSource>
         <ImageSource x:Key="Hook0">/Images/Sprites/Weapons/Hook/0.png</ImageSource>
         <ImageSource x:Key="Hook1">/Images/Sprites/Weapons/Hook/1.png</ImageSource>
+        <ImageSource x:Key="BiggestBlueBalloon">/Images/Sprites/Balloons/Blue/biggest.png</ImageSource>
     </Application.Resources>
 </Application>

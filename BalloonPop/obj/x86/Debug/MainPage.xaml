@@ -10,13 +10,19 @@
 
     <Canvas Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Image Source="{StaticResource ResourceKey=Background}" Canvas.ZIndex="0" />
-        <Image x:ConnectionId='1' Name="Person" Canvas.ZIndex="1" Source="{Binding PlayerVM.CurrentSprite}" Width="75" Height="90" Canvas.Left="{Binding PlayerVM.Left}" Canvas.Top="605" />
+        <Image x:ConnectionId='1' Name="Person" Canvas.ZIndex="1" Source="{Binding PlayerVM.CurrentSprite}" Width="45" Height="60" Canvas.Left="{Binding PlayerVM.Left}" Canvas.Top="392" />
+        <Image x:ConnectionId='2' Name="Balloon"
+               Width="{Binding BlueBalloonVM.Width}"
+               Height="{Binding BlueBalloonVM.Height}"
+               Canvas.Left="{Binding BlueBalloonVM.Left}"
+               Canvas.Top="{Binding BlueBalloonVM.Top}"
+               Source="{Binding BlueBalloonVM.CurrentSprite}"/>
 
-        <!--<Ellipse ManipulationMode="All"
-                 ManipulationStarted="Grid_ManipulationStarted_1"
-                 ManipulationCompleted="Grid_ManipulationCompleted_1"
-                 ManipulationDelta="Grid_ManipulationDelta_1"
-                 Width="100" Height="100" Canvas.Left="75" Canvas.Top="450" Fill="Red"
+        <Ellipse x:ConnectionId='3' ManipulationMode="All"
+                                                                 
+                                                                     
+                                                             
+                 Width="100" Height="100" Canvas.Left="35" Canvas.Top="300" Fill="Red"
                  Canvas.ZIndex="1"
                  Opacity="0.5"/>
 
@@ -24,26 +30,32 @@
                  Height="30"
                  Fill="Red"
                  Canvas.Left="{Binding JoystickLeft}"
-                 Canvas.Top="{Binding JoystickTop}"/>-->
+                 Canvas.Top="{Binding JoystickTop}"/>
 
-        <customControls:Joystick x:ConnectionId='2' Size="100"
+        <!--<customControls:Joystick Size="100"
                                  TouchSize="30"
                                  TouchLeftPosition="{Binding JoystickLeft, Mode=TwoWay}"
                                  TouchTopPosition="{Binding JoystickTop, Mode=TwoWay}"
-                                 Canvas.Left="75"
-                                 Canvas.Top="450"
+                                 Canvas.Left="35"
+                                 Canvas.Top="300"
                                  ManipulationMode="All"
-                                                                                 
-                                                                                     
-                                                                             />
+                                 ManipulationStarted="Grid_ManipulationStarted_1"
+                                 ManipulationCompleted="Grid_ManipulationCompleted_1"
+                                 ManipulationDelta="Grid_ManipulationDelta_1"/>-->
 
-        <Button x:ConnectionId='3'                     Canvas.Left="600" Canvas.Top="400" Content="Fire" Width="150"/>
+        <Button x:ConnectionId='4'                     Canvas.Left="600" Canvas.Top="400" Content="Fire" Width="150"/>
 
-        <Image x:ConnectionId='4' Visibility="Collapsed" Name="Hook" Source="{Binding HookVM.CurrentSprite}" Canvas.Left="{Binding HookVM.Left}" Canvas.Top="{Binding HookVM.Top}" Height="600"/>
+        <Image x:ConnectionId='5' Visibility="Collapsed"
+               Name="Hook"
+               Source="{Binding HookVM.CurrentSprite}"
+               Canvas.Left="{Binding HookVM.Left}"
+               Canvas.Top="{Binding HookVM.Top}"
+               Width="{Binding HookWidth}"
+               Height="{Binding HookHeight}"/>
 
-        <TextBlock x:ConnectionId='5' Name="X" Text="0" Canvas.Left="300" Canvas.Top="50"/>
-        <TextBlock x:ConnectionId='6' Name="Y" Text="0" Canvas.Left="350" Canvas.Top="50"/>
-        <TextBlock x:ConnectionId='7' Name="Info" Text="0" Canvas.Left="450" Canvas.Top="50"/>
+        <TextBlock x:ConnectionId='6' Name="X" Text="0" Canvas.Left="300" Canvas.Top="50"/>
+        <TextBlock x:ConnectionId='7' Name="Y" Text="0" Canvas.Left="350" Canvas.Top="50"/>
+        <TextBlock x:ConnectionId='8' Name="Info" Text="0" Canvas.Left="450" Canvas.Top="50"/>
     </Canvas>
 </Page>
 
