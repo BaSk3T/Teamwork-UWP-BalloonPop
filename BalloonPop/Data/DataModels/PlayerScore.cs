@@ -1,7 +1,7 @@
-﻿using SQLite.Net.Attributes;
-
-namespace BalloonPop.Data.DataModels
+﻿namespace BalloonPop.Data.DataModels
 {
+    using SQLite.Net.Attributes;
+
     public class PlayerScore
     {
         [PrimaryKey]
@@ -14,7 +14,7 @@ namespace BalloonPop.Data.DataModels
 
         public override string ToString()
         {
-            return $"#{this.Id}; Name: {this.UserName}; Score: {this.Score}";
+            return string.Format("Name: {0}, Score: {1}", this.UserName, this.Score);
         }
 
     }

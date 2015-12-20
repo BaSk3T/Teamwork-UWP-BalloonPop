@@ -100,8 +100,9 @@ namespace BalloonPop.ViewModels
             var playerLeft = this.PlayerVM.Left;
             var playerTop = this.PlayerVM.Top;
 
-            bool isPlayerHit = (balloonLeft <= playerLeft && playerLeft + PlayerViewModel.PlayerWidth <= balloonLeft + BiggestBlueBalloonViewModel.Size)
-                                && (balloonTop <= playerTop && playerTop <= balloonTop + BiggestBlueBalloonViewModel.Size);
+            bool isPlayerHit = (balloonLeft <= playerLeft && playerLeft <= balloonLeft + BiggestBlueBalloonViewModel.Size
+                || balloonLeft <= playerLeft + PlayerViewModel.PlayerWidth && playerLeft + PlayerViewModel.PlayerWidth <= balloonLeft + BiggestBlueBalloonViewModel.Size)
+                                && (playerTop <= balloonTop + BiggestBlueBalloonViewModel.Size);
 
             return isPlayerHit;
         }

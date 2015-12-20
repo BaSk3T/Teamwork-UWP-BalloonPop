@@ -810,3 +810,16 @@ C:\Users\Elina\Desktop\Git1\Teamwork-WUP-BalloonPop\BalloonPop\obj\x86\Debug\Pag
 C:\Users\Elina\Desktop\Git1\Teamwork-WUP-BalloonPop\BalloonPop\obj\x86\Debug\Pages\Menu.g.cs
 C:\Users\Elina\Desktop\Git1\Teamwork-WUP-BalloonPop\BalloonPop\obj\x86\Debug\Pages\Menu.xaml
 C:\Users\Elina\Desktop\Git1\Teamwork-WUP-BalloonPop\BalloonPop\obj\x86\Debug\Pages\Menu.xbf
+D:\Teamwork-WUP-BalloonPop\BalloonPop\bin\x86\Debug\Pages\Menu.xbf
+D:\Teamwork-WUP-BalloonPop\BalloonPop\bin\x86\Debug\SQLite.Net.Platform.WinRT.dll
+D:\Teamwork-WUP-BalloonPop\BalloonPop\bin\x86\Debug\SQLite.Net.Async.dll
+D:\Teamwork-WUP-BalloonPop\BalloonPop\bin\x86\Debug\SQLite.Net.dll
+D:\Teamwork-WUP-BalloonPop\BalloonPop\obj\x86\Debug\Pages\Menu.g.i.cs
+D:\Teamwork-WUP-BalloonPop\BalloonPop\obj\x86\Debug\Pages\Menu.g.cs
+D:\Teamwork-WUP-BalloonPop\BalloonPop\obj\x86\Debug\Pages\Menu.xaml
+D:\Teamwork-WUP-BalloonPop\BalloonPop\obj\x86\Debug\Pages\Menu.xbf
+D:\Teamwork-WUP-BalloonPop\BalloonPop\bin\x86\Debug\Pages\ResultPage.xbf
+D:\Teamwork-WUP-BalloonPop\BalloonPop\obj\x86\Debug\Pages\ResultPage.g.i.cs
+D:\Teamwork-WUP-BalloonPop\BalloonPop\obj\x86\Debug\Pages\ResultPage.g.cs
+D:\Teamwork-WUP-BalloonPop\BalloonPop\obj\x86\Debug\Pages\ResultPage.xaml
+D:\Teamwork-WUP-BalloonPop\BalloonPop\obj\x86\Debug\Pages\ResultPage.xbf

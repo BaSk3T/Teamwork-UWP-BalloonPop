@@ -20,6 +20,8 @@
     <RootPropertyPathName Name="Size" />
     <RootPropertyPathName Name="PlayerVM" />
     <RootPropertyPathName Name="Balloons" />
+    <RootPropertyPathName Name="ScoreAsText" />
+    <RootPropertyPathName Name="Scores" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
@@ -100,20 +102,33 @@
       <RootProperty Name="ItemsPanel" />
       <RootProperty Name="ItemContainerStyle" />
       <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Content" />
       <RootProperty Name="Name" />
-      <RootProperty Name="Height" />
+      <RootProperty Name="Visibility" />
       <RootProperty Name="Width" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Height" />
       <RootProperty Name="Template" />
       <RootProperty Name="Background" />
       <RootProperty Name="FontWeight" />
       <RootProperty Name="Foreground" />
       <RootEvent Name="Click" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
+      <RootProperty Name="Children" />
+      <RootProperty Name="Background" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
       <RootProperty Name="Name" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="BalloonPop.MainPage" />
     <RootType FullName="Windows.UI.Xaml.Media.ImageBrush">
@@ -123,5 +138,13 @@
       <RootProperty Name="Template" />
     </RootType>
     <RootType FullName="BalloonPop.Pages.Menu" />
+    <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
+      <RootProperty Name="Text" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+    </RootType>
+    <RootType FullName="BalloonPop.Pages.ResultPage" />
   </Roots.RootTypes>
 </Roots>

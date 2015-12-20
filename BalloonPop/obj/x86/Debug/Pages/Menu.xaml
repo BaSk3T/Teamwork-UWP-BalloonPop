@@ -28,16 +28,16 @@
         </Button>
 
         <!--Records buttons-->
-        <Button x:ConnectionId='2' Name="recordsButton" 
+        <Button x:ConnectionId='2' Name="ScoresButton" 
                 Height="35" 
                 Width="200" 
                 Canvas.Left="20" 
                 Canvas.Top="250"
                 Background="Brown"
-                Content="Records"
+                Content="Best scores!"
                 FontWeight="ExtraBold"
                 Foreground="White"
-                                           />
+                                  />
 
         <!--Authors button -->
         <Button x:ConnectionId='3' Name="authorsButton" 

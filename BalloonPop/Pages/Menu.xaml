@@ -28,16 +28,16 @@
         </Button>
 
         <!--Records buttons-->
-        <Button Name="recordsButton" 
+        <Button Name="ScoresButton" 
                 Height="35" 
                 Width="200" 
                 Canvas.Left="20" 
                 Canvas.Top="250"
                 Background="Brown"
-                Content="Records"
+                Content="Best scores!"
                 FontWeight="ExtraBold"
                 Foreground="White"
-                Click="recordsButton_Click"/>
+                Click="ShowScores"/>
 
         <!--Authors button -->
         <Button Name="authorsButton" 

@@ -82,9 +82,10 @@
 
         <Button Click="Button_Click" Canvas.Left="460" Canvas.Top="240" Content="Fall"/>
 
-        <Button Click="Button_Click_1" Content="Result" Canvas.Left="50" Canvas.Top="50"/>
-
-        <TextBox Name="Score" Canvas.Left="100" Canvas.Top="100"/>
+        <StackPanel Canvas.Left="200" Canvas.Top="90">
+            <TextBox Name="NameOfPlayer" Visibility="Collapsed" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Button Name="NameSubmiter" Click="EnterName" Visibility="Collapsed" Width="100"  Content="Enter" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </StackPanel>
 
         <Image Visibility="{Binding HookVM.Visible, Converter={StaticResource BooleanVisibilityConverter}}"
                Name="Hook"

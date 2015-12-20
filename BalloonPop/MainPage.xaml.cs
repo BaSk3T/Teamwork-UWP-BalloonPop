@@ -24,6 +24,7 @@ using SQLite.Net.Async;
 using SQLite.Net.Platform.WinRT;
 using Windows.Storage;
 using System.Threading.Tasks;
+using BalloonPop.Pages;
 
 namespace BalloonPop
 {
@@ -36,17 +37,12 @@ namespace BalloonPop
             this.InitializeComponent();
             this.ViewModel = new MainPageViewModel();
             this.DataContext = this.ViewModel;
-            this.InitDb();
 
             ////Accelerometer
             //this.accelerometer = Accelerometer.GetDefault();
             //this.accelerometer.ReportInterval = 50;
             //this.accelerometer.ReadingChanged += new TypedEventHandler<Accelerometer, AccelerometerReadingChangedEventArgs>(ReadingChanged);
         }
-
-        public AllBalloons Balloons { get; set; }
-
-        public BiggestBlueBalloonViewModel BlueBalloonVM { get; set; }
 
         public MainPageViewModel ViewModel { get; set; }
 
@@ -166,9 +162,9 @@ namespace BalloonPop
                 if (this.ViewModel.IsPlayerDestroyed())
                 {
                     this.ViewModel.PlayerVM.IsAlive = false;
+                    fallTimer.Stop();
                     this.EndGame();
                 }
-
 
                 if (leftPosition <= 0)
                 {
@@ -287,59 +283,24 @@ namespace BalloonPop
             });
         }
 
-        private async void EndGame()
+        private void EndGame()
+        {
+            this.NameOfPlayer.Visibility = Visibility.Visible;
+            this.NameSubmiter.Visibility = Visibility.Visible;
+        }
+
+        private void EnterName(object sender, RoutedEventArgs e)
         {
             var score = this.ViewModel.PlayerVM.Score;
+            var username = this.NameOfPlayer.Text;
 
             var playerScore = new PlayerScore
             {
-                UserName = "Misho",
+                UserName = username,
                 Score = score
             };
 
-            await this.InsertPlayerScoreAsync(playerScore);
-        }
-
-        private SQLiteAsyncConnection GetDbConnectionAsync()
-        {
-            var dbFilePath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "db.sqlite");
-
-            var connectionFactory =
-                new Func<SQLiteConnectionWithLock>(
-                    () =>
-                    new SQLiteConnectionWithLock(
-                        new SQLitePlatformWinRT(),
-                        new SQLiteConnectionString(dbFilePath, storeDateTimeAsTicks: false)));
-
-            var asyncConnection = new SQLiteAsyncConnection(connectionFactory);
-
-            return asyncConnection;
-        }
-
-        private async void InitDb()
-        {
-            var connection = this.GetDbConnectionAsync();
-            await connection.CreateTableAsync<PlayerScore>();
-        }
-
-        private async Task<int> InsertPlayerScoreAsync(PlayerScore playerScore)
-        {
-            var connection = this.GetDbConnectionAsync();
-            var result = await connection.InsertAsync(playerScore);
-            return result;
-        }
-
-        private async Task<PlayerScore> GetPlayerScoreAsync()
-        {
-            var connection = this.GetDbConnectionAsync();
-            var result = await connection.Table<PlayerScore>().FirstOrDefaultAsync();
-            return result;
-        }
-
-        private async void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            var playerScore = await this.GetPlayerScoreAsync();
-            this.Score.Text = playerScore.ToString();
+            this.Frame.Navigate(typeof(ResultPage), playerScore);
         }
     }
 }
