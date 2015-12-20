@@ -9,17 +9,37 @@
 
     <Page.Resources>
         <DataTemplate x:Key="ScoreTemplate">
-            <TextBlock Text="{Binding ScoreAsText}" FontSize="16" Foreground="Gold"/>
+            <TextBlock Text="{Binding ScoreAsText}" 
+                       FontSize="16" 
+                       Foreground="Black" 
+                       FontWeight="ExtraBold"/>
         </DataTemplate>
     </Page.Resources>
 
-    <StackPanel Background="Black">
-        <TextBlock Text="Results" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="40" Foreground="Purple"/>
+    <StackPanel>
+        <StackPanel.Background>
+            <ImageBrush ImageSource="../Images/Backgrounds/desert.png"/>
+        </StackPanel.Background>
+        <TextBlock Text="Results" 
+                   VerticalAlignment="Top" 
+                   HorizontalAlignment="Center" 
+                   FontSize="40" 
+                   Foreground="Brown"/>
+        
         <ItemsControl ItemsSource="{Binding Scores}"
                       ItemTemplate="{StaticResource ScoreTemplate}"
                       VerticalAlignment="Center"
-                      HorizontalAlignment="Center"/>
+                      HorizontalAlignment="Center"
+                      Foreground="Black"/>
 
-        <Button Background="Purple" Foreground="Yellow" Name="GoToMenu" Click="SwitchToMenu" Content="Menu" Width="150" HorizontalAlignment="Center"/>
+        <Button Background="Brown" 
+                Foreground="White"
+                Canvas.Left="120"
+                Canvas.Top="250"
+                Width="200"
+                Height="35"
+                Content="Back to Menu"
+                Click="SwitchToMenu"
+                HorizontalAlignment="Center"/>
     </StackPanel>
 </Page>
