@@ -3,6 +3,7 @@ using BalloonPop.ViewModels.GameObjects.Players;
 using BalloonPop.ViewModels.GameObjects.Weapons;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,72 +12,37 @@ namespace BalloonPop.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
-        private double joystickLeft;
-        private double joystickTop;
-
         public MainPageViewModel()
         {
-            this.JoystickLeft = 70;
-            this.JoystickTop = 330;
-            this.HookVM = new HookViewModel();
-            this.PlayerVM = new PlayerViewModel();
-            this.BlueBalloonVM = new BiggestBlueBalloonViewModel();
+            this.JoystickVM = new JoystickViewModel();
 
-            this.PlayerVM.Left = 450;
+            this.HookVM = new HookViewModel();
+
+            this.PlayerVM = new PlayerViewModel();
+
+            this.BlueBalloonVM = new BiggestBlueBalloonViewModel();
             this.BlueBalloonVM.Left = 150;
-            this.BlueBalloonVM.Top = 30;
+            this.BlueBalloonVM.Top = 100;
+
+            this.Balloons = new AllBalloons();
+            this.Balloons.Add(this.BlueBalloonVM);
+            this.Balloons.Add(new BiggestBlueBalloonViewModel { Left = 150, Top = 150 });
         }
+        public JoystickViewModel JoystickVM { get; set; }
 
         public HookViewModel HookVM { get; set; }
 
         public PlayerViewModel PlayerVM { get; set; }
 
+        public AllBalloons Balloons { get; set; }
+
         public BiggestBlueBalloonViewModel BlueBalloonVM { get; set; }
-
-        public int HookWidth { get { return 20; } }
-        public int HookHeight { get { return 420; } }
-
-        public double JoystickLeft
-        {
-            get
-            {
-                return this.joystickLeft;
-            }
-            set
-            {
-                if (this.joystickLeft == value)
-                {
-                    return;
-                }
-
-                this.joystickLeft = value;
-                this.RaisePropertyChanged("JoystickLeft");
-            }
-        }
-
-        public double JoystickTop
-        {
-            get
-            {
-                return this.joystickTop;
-            }
-            set
-            {
-                if (this.joystickTop == value)
-                {
-                    return;
-                }
-
-                this.joystickTop = value;
-                this.RaisePropertyChanged("JoystickTop");
-            }
-        }
 
         public void UpdateHook()
         {
             this.HookVM.CurrentSprite = this.HookVM.Sprites[this.HookVM.CurrentFrame % this.HookVM.SpriteFrames];
             this.HookVM.CurrentFrame++;
-            this.HookVM.Top -= this.HookVM.Velocity;
+            this.HookVM.Top -= HookViewModel.Velocity;
         }
 
         public void SetHookPosition(double left, double top)
@@ -88,14 +54,14 @@ namespace BalloonPop.ViewModels
         public void MovePlayerLeft()
         {
             this.PlayerVM.CurrentSprite = this.PlayerVM.WalkingLeftSprites[this.PlayerVM.CurrentFrame % this.PlayerVM.WalkingLeftSprites.Length];
-            this.PlayerVM.Left -= this.PlayerVM.Velocity;
+            this.PlayerVM.Left -= PlayerViewModel.Velocity;
             this.PlayerVM.CurrentFrame++;
         }
 
         public void MovePlayerRight()
         {
             this.PlayerVM.CurrentSprite = this.PlayerVM.WalkingRightSprites[this.PlayerVM.CurrentFrame % this.PlayerVM.WalkingRightSprites.Length];
-            this.PlayerVM.Left += this.PlayerVM.Velocity;
+            this.PlayerVM.Left += PlayerViewModel.Velocity;
             this.PlayerVM.CurrentFrame++;
         }
 
@@ -104,12 +70,27 @@ namespace BalloonPop.ViewModels
             this.PlayerVM.CurrentSprite = this.PlayerVM.StandingStillSprite;
         }
 
+        public void MoveBall()
+        {
+            if (this.BlueBalloonVM.GoingLeft)
+            {
+                this.Balloons.GetFirst().Left -= Balloon.SideVelocity;
+            }
+            else
+            {
+                this.Balloons.GetFirst().Left += Balloon.SideVelocity;
+            }
+        }
+
         public bool IsBalloonDestroyed()
         {
-            return (this.BlueBalloonVM.Left <= this.HookVM.Left
-                     && this.HookVM.Left <= this.BlueBalloonVM.Left + this.BlueBalloonVM.Width)
-                     && (this.BlueBalloonVM.Top <= this.HookVM.Top
-                     && this.HookVM.Top <= this.BlueBalloonVM.Top + this.BlueBalloonVM.Height);
+            var balloonLeft = this.Balloons.GetFirst().Left;
+            var balloonTop = this.Balloons.GetFirst().Top;
+            var hookLeft = this.HookVM.Left;
+            var hookTop = this.HookVM.Top;
+
+            return ((balloonLeft <= hookLeft && hookLeft + HookViewModel.ProjectileWidthConst <= balloonLeft + BiggestBlueBalloonViewModel.Size)
+                    && (hookTop <= balloonTop && balloonTop + BiggestBlueBalloonViewModel.Size <= hookTop + HookViewModel.ProjectileHeightConst));
         }
     }
 }

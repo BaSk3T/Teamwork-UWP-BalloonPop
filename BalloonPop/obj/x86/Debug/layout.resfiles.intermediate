@@ -9,6 +9,7 @@ Assets\StoreLogo.png
 Assets\Wide310x150Logo.scale-200.png
 BalloonPop.xr.xml
 Images\Backgrounds\desert.png
+Images\Sprites\Balloons\Blue\big.png
 Images\Sprites\Balloons\Blue\biggest.png
 Images\Sprites\Player\default.png
 Images\Sprites\Player\left0.png
@@ -21,4 +22,6 @@ Images\Sprites\Player\right2.png
 Images\Sprites\Player\right3.png
 Images\Sprites\Weapons\Hook\0.png
 Images\Sprites\Weapons\Hook\1.png
+Music\mainGameMusic.mp3
+Music\Minion.mp3
 Properties\Default.rd.xml

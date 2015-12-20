@@ -101,18 +101,25 @@
     <Compile Include="CustomControls\Joystick.xaml.cs">
       <DependentUpon>Joystick.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Helpers\BindingHelper.cs" />
     <Compile Include="Helpers\DelegateCommand.cs" />
     <Compile Include="Helpers\ISpriteLoader.cs" />
+    <Compile Include="Helpers\Converters\VisibilityConverter.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\BasicElementMovement.cs" />
+    <Compile Include="ViewModels\GameObjects\Balloons\AllBalloons.cs" />
     <Compile Include="ViewModels\GameObjects\Balloons\Balloon.cs" />
+    <Compile Include="ViewModels\GameObjects\Balloons\BigBlueBalloonViewModel.cs" />
     <Compile Include="ViewModels\GameObjects\Balloons\BiggestBlueBalloonViewModel.cs" />
     <Compile Include="ViewModels\GameObjects\GameMovableObject.cs" />
     <Compile Include="ViewModels\GameObjects\Players\PlayerViewModel.cs" />
     <Compile Include="ViewModels\GameObjects\Weapons\HookViewModel.cs" />
     <Compile Include="ViewModels\GameObjects\Weapons\Weapon.cs" />
+    <Compile Include="ViewModels\JoystickViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
   </ItemGroup>
@@ -124,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\Backgrounds\desert.png" />
+    <Content Include="Images\Sprites\Balloons\Blue\big.png" />
     <Content Include="Images\Sprites\Balloons\Blue\biggest.png" />
     <Content Include="Images\Sprites\Player\right0.png" />
     <Content Include="Images\Sprites\Player\right1.png" />
@@ -136,6 +144,8 @@
     <Content Include="Images\Sprites\Player\default.png" />
     <Content Include="Images\Sprites\Weapons\Hook\0.png" />
     <Content Include="Images\Sprites\Weapons\Hook\1.png" />
+    <Content Include="Music\mainGameMusic.mp3" />
+    <Content Include="Music\Minion.mp3" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

@@ -5,18 +5,23 @@
 
     public class HookViewModel : Weapon
     {
-        private const double VelocityConst = 14;
         private const string SpriteName = "Hook";
         private const int Frames = 2;
 
+        public const double Velocity = 14;
+        public const double ProjectileHeightConst = 420;
+        public const double ProjectileWidthConst = 20;
+
         public HookViewModel()
-            : base(VelocityConst)
         {
             this.Sprites = new BitmapSource[Frames];
 
             this.LoadSprites();
-            this.SetProjectileSize();
         }
+
+        public double ProjectileHeight { get { return ProjectileHeightConst; } }
+
+        public double ProjectileHWidth { get { return ProjectileWidthConst; } }
 
         public BitmapSource[] Sprites { get; set; }
 
@@ -28,12 +33,6 @@
             {
                 this.Sprites[frameCount] = (BitmapSource)Application.Current.Resources[SpriteName + frameCount];
             }
-        }
-
-        private void SetProjectileSize()
-        {
-            this.ProjectileHeight = this.Sprites[0].PixelHeight;
-            this.ProjectileWidth = this.Sprites[0].PixelWidth;
         }
     }
 }

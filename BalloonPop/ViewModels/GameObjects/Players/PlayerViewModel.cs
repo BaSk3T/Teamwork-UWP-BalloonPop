@@ -5,20 +5,32 @@
 
     public class PlayerViewModel : GameMovableObject
     {
-        private const double VelocityConst = 14;
         private const int WalkingFrames = 4;
         private const string WalkingLeftSpriteName = "WalkingLeft";
         private const string WalkingRightSpriteName = "WalkingRight";
         private const string StandingStillSpriteName = "StandStill";
+        public const double TopPostion = 235;
+        public const double LeftPosition = 140;
+
+        public const double Velocity = 14;
 
         public PlayerViewModel()
-            : base(VelocityConst)
         {
             this.WalkingLeftSprites = new BitmapSource[WalkingFrames];
             this.WalkingRightSprites = new BitmapSource[WalkingFrames];
             this.LoadSprites();
             this.CurrentSprite = this.StandingStillSprite;
+            this.CanFire = true;
+            this.Visible = true;
+            this.Top = TopPostion;
+            this.Left = LeftPosition;
         }
+        
+        public bool CanFire { get; set; }
+
+        public bool IsMoving { get; set; }
+
+        public bool StandingStill { get; set; }
 
         public BitmapSource[] WalkingLeftSprites { get; set; }
 

@@ -4,57 +4,19 @@
 
     using BalloonPop.Helpers;
 
-    public abstract class GameMovableObject : ViewModelBase, ISpriteLoader
+    public abstract class GameMovableObject : BasicElementMovement, ISpriteLoader
     {
-        private double top;
-        private double left;
+        private bool visible;
         private BitmapSource currentSprite;
 
-        protected GameMovableObject(double velocity)
+        protected GameMovableObject()
         {
             this.CurrentFrame = 0;
-            this.Velocity = velocity;
         }
-
-        public double Velocity { get; set; }
-
+        
+        public bool GoingLeft { get; set; }
+        
         public int CurrentFrame { get; set; }
-
-        public double Left
-        {
-            get
-            {
-                return this.left;
-            }
-            set
-            {
-                if (this.left == value)
-                {
-                    return;
-                }
-
-                this.left = value;
-                this.RaisePropertyChanged("Left");
-            }
-        }
-
-        public double Top
-        {
-            get
-            {
-                return this.top;
-            }
-            set
-            {
-                if (this.top == value)
-                {
-                    return;
-                }
-
-                this.top = value;
-                this.RaisePropertyChanged("Top");
-            }
-        }
 
         public BitmapSource CurrentSprite
         {
@@ -71,6 +33,24 @@
 
                 this.currentSprite = value;
                 this.RaisePropertyChanged("CurrentSprite");
+            }
+        }
+
+        public bool Visible
+        {
+            get
+            {
+                return this.visible;
+            }
+            set
+            {
+                if (this.visible == value)
+                {
+                    return;
+                }
+
+                this.visible = value;
+                this.RaisePropertyChanged("Visible");
             }
         }
 

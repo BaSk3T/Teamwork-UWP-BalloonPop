@@ -8,49 +8,11 @@ namespace BalloonPop.ViewModels.GameObjects.Balloons
 {
     public abstract class Balloon : GameMovableObject
     {
-        private double width;
-        private double height;
+        public const double SideVelocity = 7.0;
 
-        protected Balloon(double velocity, double size)
-            :base(velocity)
+        protected Balloon()
         {
-            this.Height = size;
-            this.Width = size;
-        }
-        public double Width
-        {
-            get
-            {
-                return this.width;
-            }
-            set
-            {
-                if (this.width == value)
-                {
-                    return;
-                }
-
-                this.width = value;
-                this.RaisePropertyChanged("Width");
-            }
-        }
-
-        public double Height
-        {
-            get
-            {
-                return this.height;
-            }
-            set
-            {
-                if (this.height == value)
-                {
-                    return;
-                }
-
-                this.height = value;
-                this.RaisePropertyChanged("Height");
-            }
+            this.Visible = true;
         }
     }
 }

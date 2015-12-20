@@ -2,13 +2,9 @@
 {
     public abstract class Weapon : GameMovableObject
     {
-        protected Weapon(double velocity)
-            : base(velocity)
+        protected Weapon()
         {
+            this.Visible = false;
         }
-
-        public int ProjectileWidth { get; set; }
-
-        public int ProjectileHeight { get; set; }
     }
 }

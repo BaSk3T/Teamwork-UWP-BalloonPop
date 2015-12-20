@@ -1,12 +1,16 @@
 ﻿using BalloonPop.ViewModels;
+using BalloonPop.ViewModels.GameObjects.Balloons;
+using BalloonPop.ViewModels.GameObjects.Players;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Devices.Input;
+using Windows.Devices.Sensors;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -19,133 +23,186 @@ namespace BalloonPop
 {
     public sealed partial class MainPage : Page
     {
-        public bool GoingLeft { get; set; }
-        public bool StandingStill { get; set; }
-        public bool IsMoving { get; set; }
-        public bool CanFire { get; set; }
+        private Accelerometer accelerometer;
 
         public MainPage()
         {
             this.InitializeComponent();
             this.ViewModel = new MainPageViewModel();
             this.DataContext = this.ViewModel;
-            this.CanFire = true;
+
+            ////Accelerometer
+            //this.accelerometer = Accelerometer.GetDefault();
+            //this.accelerometer.ReportInterval = 50;
+            //this.accelerometer.ReadingChanged += new TypedEventHandler<Accelerometer, AccelerometerReadingChangedEventArgs>(ReadingChanged);
         }
+
+        public AllBalloons Balloons { get; set; }
+
+        public BiggestBlueBalloonViewModel BlueBalloonVM { get; set; }
 
         public MainPageViewModel ViewModel { get; set; }
 
-        public DispatcherTimer Timer { get; set; }
+        public DispatcherTimer PlayerMovementTimer { get; set; }
 
-        private void Grid_ManipulationStarted_1(object sender, ManipulationStartedRoutedEventArgs e)
-        {
-            if (e.PointerDeviceType != PointerDeviceType.Touch)
-            {
-                e.Handled = true;
-            }
+        public DispatcherTimer WeaponMovementTimer { get; set; }
 
-            this.Timer = new DispatcherTimer();
-            this.Timer.Interval = TimeSpan.FromSeconds(1.0 / 25.0);
-
-            // Creates move animation
-            this.Timer.Tick += (s, ev) =>
-            {
-                if (this.GoingLeft && this.IsMoving)
-                {
-                    this.ViewModel.MovePlayerLeft();
-
-                }
-                else if (!this.GoingLeft && this.IsMoving)
-                {
-                    this.ViewModel.MovePlayerRight();
-                }
-            };
-        }
-
-        private void Grid_ManipulationCompleted_1(object sender, ManipulationCompletedRoutedEventArgs e)
+        private void AnimatePlayerStarted(object sender, ManipulationStartedRoutedEventArgs e)
         {
             if (e.PointerDeviceType != PointerDeviceType.Touch)
             {
                 e.Handled = true;
             }
             
+            this.InitializePlayerMoveAnimationTimerTick();
+        }
+
+        private void AnimatePlayerCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+        {
+            if (e.PointerDeviceType != PointerDeviceType.Touch)
+            {
+                e.Handled = true;
+            }
+
             // Stops animation of player
-            this.Timer.Stop();
-            this.IsMoving = false;
+            this.PlayerMovementTimer.Stop();
+            this.ViewModel.PlayerVM.IsMoving = false;
 
             // Resets player sprite
             this.ViewModel.SetPlayerSpriteStanding();
 
             // Returns touch of joystick to default position
-            this.ViewModel.JoystickTop = 330;
-            this.ViewModel.JoystickLeft = 70;
+            this.ViewModel.JoystickVM.TouchTop = JoystickViewModel.OriginalTouchTopPosition;
+            this.ViewModel.JoystickVM.TouchLeft = JoystickViewModel.OriginalTouchLeftPosition;
         }
 
-        private void Grid_ManipulationDelta_1(object sender, ManipulationDeltaRoutedEventArgs e)
+        private void AnimatePlayerDelta(object sender, ManipulationDeltaRoutedEventArgs e)
         {
             var x = e.Position.X;
             var y = e.Position.Y;
-
-            this.X.Text = x.ToString();
-            this.Y.Text = y.ToString();
-
-            if (x > 100 || x < 0 || y < 0 || y > 100)
+           
+            if (x > JoystickViewModel.SizeConst || x < 0 || y < 0 || y > JoystickViewModel.SizeConst)
             {
-                this.Timer.Stop();
-                this.IsMoving = false;
+                this.PlayerMovementTimer.Stop();
+                this.ViewModel.PlayerVM.IsMoving = false;
                 this.ViewModel.SetPlayerSpriteStanding();
                 return;
             }
 
             //Moves touch of joystick to current location
-            this.ViewModel.JoystickTop = y + 290;
-            this.ViewModel.JoystickLeft = x + 20;
+            this.ViewModel.JoystickVM.TouchTop = y + JoystickViewModel.OriginalJoyistickTopPosition - JoystickViewModel.TouchSizeConst / 2; // top of joystick - half of touch
+            this.ViewModel.JoystickVM.TouchLeft = x + JoystickViewModel.OriginalJoystickLeftPosition - JoystickViewModel.TouchSizeConst / 2; // left of joystick - half of touch
 
-            if (0 <= x && x <= 35)
+            if (0 <= x && x <= JoystickViewModel.SizeConst / 2 - JoystickViewModel.TouchSizeConst / 2)
             {
-                this.GoingLeft = true;
-                this.StandingStill = false;
+                this.ViewModel.PlayerVM.GoingLeft = true;
+                this.ViewModel.PlayerVM.StandingStill = false;
             }
-            else if (65 <= x && x <= 100)
+            else if (JoystickViewModel.SizeConst / 2 + JoystickViewModel.TouchSizeConst / 2 <= x && x <= JoystickViewModel.SizeConst)
             {
-                this.GoingLeft = false;
-                this.StandingStill = false;
+                this.ViewModel.PlayerVM.GoingLeft = false;
+                this.ViewModel.PlayerVM.StandingStill = false;
             }
             else
             {
-                this.StandingStill = true;
+                this.ViewModel.PlayerVM.StandingStill = true;
             }
 
-            if (this.StandingStill)
-            {
-                this.Timer.Stop();
-                this.IsMoving = false;
-                this.ViewModel.SetPlayerSpriteStanding();
-                return;
-            }
-
-            if (!this.IsMoving)
-            {
-                this.IsMoving = true;
-                this.Timer.Start();
-            }
+            this.MovePlayerIfPossible();
         }
 
         private void FireWithGun(object sender, RoutedEventArgs e)
         {
-            if (!this.CanFire)
+            if (!this.ViewModel.PlayerVM.CanFire)
             {
                 return;
             }
 
             // Show and set position of projectile
-            this.ViewModel.SetHookPosition(this.ViewModel.PlayerVM.Left + 10, 390);
-            this.Hook.Visibility = Visibility.Visible;
-            this.CanFire = false;
+            this.ViewModel.SetHookPosition(this.ViewModel.PlayerVM.Left + 10, PlayerViewModel.TopPostion);
+            this.ViewModel.HookVM.Visible = true;
+            this.ViewModel.PlayerVM.CanFire = false;
+        
+            this.InitilizeWeaponMoveAnimationTimerTick();
 
-            var hookTimer = new DispatcherTimer();
-            hookTimer.Interval = TimeSpan.FromSeconds(1.0 / 30.0);
+            this.WeaponMovementTimer.Start();
+        }
 
-            hookTimer.Tick += (ob, ev) =>
+        private void StopHook()
+        {
+            // Stops animation of projectile
+            this.WeaponMovementTimer.Stop();
+            this.ViewModel.HookVM.Visible = false;
+            this.ViewModel.PlayerVM.CanFire = true;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var fallTimer = new DispatcherTimer();
+            fallTimer.Interval = TimeSpan.FromSeconds(1.0 / 50.0);
+
+            double acellerationForce = 1;
+            double velocity = 0;
+            double topPosition;
+            double leftPosition;
+
+            fallTimer.Tick += (ob, ev) =>
+            {
+                topPosition = this.ViewModel.Balloons.GetFirst().Top;
+                leftPosition = this.ViewModel.Balloons.GetFirst().Left;
+
+                this.ViewModel.MoveBall();
+
+                if (leftPosition <= 0)
+                {
+                    this.ViewModel.Balloons.GetFirst().GoingLeft = false;
+                }
+                else if (leftPosition >= 400 + BigBlueBalloonViewModel.Size)
+                {
+                    this.ViewModel.Balloons.GetFirst().GoingLeft = true;
+                }
+
+                if (topPosition >= 240)
+                {
+                    topPosition = 240;
+                    velocity = BiggestBlueBalloonViewModel.Velocity;
+                }
+
+                topPosition += velocity;
+                velocity += acellerationForce;
+
+                this.ViewModel.Balloons.GetFirst().Top = topPosition;
+            };
+
+            fallTimer.Start();
+        }
+
+        private void InitializePlayerMoveAnimationTimerTick()
+        {
+            this.PlayerMovementTimer = new DispatcherTimer();
+            this.PlayerMovementTimer.Interval = TimeSpan.FromSeconds(1.0 / 25.0);
+
+            // Creates move animation
+            this.PlayerMovementTimer.Tick += (s, ev) =>
+            {
+                if (this.ViewModel.PlayerVM.GoingLeft && this.ViewModel.PlayerVM.IsMoving)
+                {
+                    this.ViewModel.MovePlayerLeft();
+
+                }
+                else if (!this.ViewModel.PlayerVM.GoingLeft && this.ViewModel.PlayerVM.IsMoving)
+                {
+                    this.ViewModel.MovePlayerRight();
+                }
+            };
+        }
+
+        private void InitilizeWeaponMoveAnimationTimerTick()
+        {
+            this.WeaponMovementTimer = new DispatcherTimer();
+            this.WeaponMovementTimer.Interval = TimeSpan.FromSeconds(1.0 / 30.0);
+
+            this.WeaponMovementTimer.Tick += (ob, ev) =>
             {
                 // Updates position of projectile
                 this.ViewModel.UpdateHook();
@@ -153,25 +210,63 @@ namespace BalloonPop
                 // Destroys balloon if interacted with projectile
                 if (this.ViewModel.IsBalloonDestroyed())
                 {
-                    this.Balloon.Visibility = Visibility.Collapsed;
-                    this.StopHook(hookTimer);
+                    this.ViewModel.Balloons.GetFirst().Visible = true;
+                    this.StopHook();
                 }
 
                 if (this.ViewModel.HookVM.Top <= 0)
                 {
-                    this.StopHook(hookTimer);
+                    this.StopHook();
                 }
             };
-
-            hookTimer.Start();
         }
 
-        private void StopHook(DispatcherTimer hookTimer)
+        private void MovePlayerIfPossible()
         {
-            // Stops animation of projectile
-            hookTimer.Stop();
-            this.Hook.Visibility = Visibility.Collapsed;
-            this.CanFire = true;
+            if (this.ViewModel.PlayerVM.StandingStill)
+            {
+                this.PlayerMovementTimer.Stop();
+                this.ViewModel.PlayerVM.IsMoving = false;
+                this.ViewModel.SetPlayerSpriteStanding();
+                return;
+            }
+
+            if (!this.ViewModel.PlayerVM.IsMoving)
+            {
+                this.ViewModel.PlayerVM.IsMoving = true;
+                this.PlayerMovementTimer.Start();
+            }
+        }
+
+       async private void ReadingChanged(object Accelerometer, AccelerometerReadingChangedEventArgs e)
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                AccelerometerReading reading = e.Reading;
+
+                var x = reading.AccelerationX;
+                var y = reading.AccelerationY;
+                var z = reading.AccelerationZ;
+
+                var pitchAngle = Math.Atan2(-y, Math.Sqrt(x * x + z * z)) * (180 / Math.PI);
+
+                if (pitchAngle < -20)
+                {
+                    this.ViewModel.PlayerVM.GoingLeft = true;
+                    this.ViewModel.PlayerVM.StandingStill = false;
+                }
+                else if (pitchAngle > 20)
+                {
+                    this.ViewModel.PlayerVM.GoingLeft = false;
+                    this.ViewModel.PlayerVM.StandingStill = false;
+                }
+                else
+                {
+                    this.ViewModel.PlayerVM.StandingStill = true;
+                }
+
+                this.MovePlayerIfPossible();
+            });
         }
     }
 }

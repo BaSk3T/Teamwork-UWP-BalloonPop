@@ -3,8 +3,10 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:BalloonPop"
+    xmlns:converters="using:BalloonPop.Helpers.Converters"
     RequestedTheme="Light">
     <Application.Resources>
+        <converters:VisibilityConverter x:Key="BooleanVisibilityConverter" />
         <ImageSource x:Key="Background">/Images/Backgrounds/desert.png</ImageSource>
         <ImageSource x:Key="StandStill">/Images/Sprites/Player/default.png</ImageSource>
         <ImageSource x:Key="WalkingLeft0">/Images/Sprites/Player/left0.png</ImageSource>
@@ -18,6 +20,7 @@
         <ImageSource x:Key="Hook0">/Images/Sprites/Weapons/Hook/0.png</ImageSource>
         <ImageSource x:Key="Hook1">/Images/Sprites/Weapons/Hook/1.png</ImageSource>
         <ImageSource x:Key="BiggestBlueBalloon">/Images/Sprites/Balloons/Blue/biggest.png</ImageSource>
+        <ImageSource x:Key="BigBlueBalloon">/Images/Sprites/Balloons/Blue/big.png</ImageSource>
     </Application.Resources>
 </Application>
 
