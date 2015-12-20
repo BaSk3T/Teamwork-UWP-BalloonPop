@@ -132,7 +132,7 @@ namespace BalloonPop.BalloonPop_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[19];
+            _typeNameTable = new string[20];
             _typeNameTable[0] = "BalloonPop.Helpers.Converters.VisibilityConverter";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "BalloonPop.CustomControls.Joystick";
@@ -152,8 +152,9 @@ namespace BalloonPop.BalloonPop_XamlTypeInfo
             _typeNameTable[16] = "BalloonPop.ViewModels.ViewModelBase";
             _typeNameTable[17] = "BalloonPop.ViewModels.MainPageViewModel";
             _typeNameTable[18] = "Windows.UI.Xaml.DispatcherTimer";
+            _typeNameTable[19] = "BalloonPop.Pages.Menu";
 
-            _typeTable = new global::System.Type[19];
+            _typeTable = new global::System.Type[20];
             _typeTable[0] = typeof(global::BalloonPop.Helpers.Converters.VisibilityConverter);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::BalloonPop.CustomControls.Joystick);
@@ -173,6 +174,7 @@ namespace BalloonPop.BalloonPop_XamlTypeInfo
             _typeTable[16] = typeof(global::BalloonPop.ViewModels.ViewModelBase);
             _typeTable[17] = typeof(global::BalloonPop.ViewModels.MainPageViewModel);
             _typeTable[18] = typeof(global::Windows.UI.Xaml.DispatcherTimer);
+            _typeTable[19] = typeof(global::BalloonPop.Pages.Menu);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -216,6 +218,7 @@ namespace BalloonPop.BalloonPop_XamlTypeInfo
         private object Activate_15_BasicElementMovement() { return new global::BalloonPop.ViewModels.BasicElementMovement(); }
         private object Activate_16_ViewModelBase() { return new global::BalloonPop.ViewModels.ViewModelBase(); }
         private object Activate_17_MainPageViewModel() { return new global::BalloonPop.ViewModels.MainPageViewModel(); }
+        private object Activate_19_Menu() { return new global::BalloonPop.Pages.Menu(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -343,6 +346,13 @@ namespace BalloonPop.BalloonPop_XamlTypeInfo
 
             case 18:   //  Windows.UI.Xaml.DispatcherTimer
                 xamlType = new global::BalloonPop.BalloonPop_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 19:   //  BalloonPop.Pages.Menu
+                userType = new global::BalloonPop.BalloonPop_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_19_Menu;
+                userType.SetIsLocalType();
+                xamlType = userType;
                 break;
             }
             return xamlType;

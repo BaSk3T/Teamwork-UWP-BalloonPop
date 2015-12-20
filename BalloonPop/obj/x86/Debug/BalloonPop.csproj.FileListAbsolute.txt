@@ -805,3 +805,8 @@ C:\Users\Elina\Desktop\Git1\Teamwork-WUP-BalloonPop\BalloonPop\obj\x86\Debug\Pro
 C:\Users\Elina\Desktop\Git1\Teamwork-WUP-BalloonPop\BalloonPop\bin\x86\Debug\SQLite.Net.Platform.WinRT.dll
 C:\Users\Elina\Desktop\Git1\Teamwork-WUP-BalloonPop\BalloonPop\bin\x86\Debug\SQLite.Net.Async.dll
 C:\Users\Elina\Desktop\Git1\Teamwork-WUP-BalloonPop\BalloonPop\bin\x86\Debug\SQLite.Net.dll
+C:\Users\Elina\Desktop\Git1\Teamwork-WUP-BalloonPop\BalloonPop\bin\x86\Debug\Pages\Menu.xbf
+C:\Users\Elina\Desktop\Git1\Teamwork-WUP-BalloonPop\BalloonPop\obj\x86\Debug\Pages\Menu.g.i.cs
+C:\Users\Elina\Desktop\Git1\Teamwork-WUP-BalloonPop\BalloonPop\obj\x86\Debug\Pages\Menu.g.cs
+C:\Users\Elina\Desktop\Git1\Teamwork-WUP-BalloonPop\BalloonPop\obj\x86\Debug\Pages\Menu.xaml
+C:\Users\Elina\Desktop\Git1\Teamwork-WUP-BalloonPop\BalloonPop\obj\x86\Debug\Pages\Menu.xbf

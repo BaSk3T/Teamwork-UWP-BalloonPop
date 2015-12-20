@@ -357,6 +357,12 @@
     <AppxPackagedFile Include="C:\Users\Elina\Desktop\Git1\Teamwork-WUP-BalloonPop\BalloonPop\Images\Backgrounds\desert.png">
       <PackagePath>Images\Backgrounds\desert.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Elina\Desktop\Git1\Teamwork-WUP-BalloonPop\BalloonPop\Images\Menu\background.png">
+      <PackagePath>Images\Menu\background.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Elina\Desktop\Git1\Teamwork-WUP-BalloonPop\BalloonPop\Images\Menu\playbutton.png">
+      <PackagePath>Images\Menu\playbutton.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Elina\Desktop\Git1\Teamwork-WUP-BalloonPop\BalloonPop\Images\Sprites\Balloons\Blue\big.png">
       <PackagePath>Images\Sprites\Balloons\Blue\big.png</PackagePath>
     </AppxPackagedFile>

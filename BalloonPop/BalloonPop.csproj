@@ -110,6 +110,9 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Menu.xaml.cs">
+      <DependentUpon>Menu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\BasicElementMovement.cs" />
     <Compile Include="ViewModels\GameObjects\Balloons\AllBalloons.cs" />
@@ -132,6 +135,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\Backgrounds\desert.png" />
+    <Content Include="Images\Menu\background.png" />
+    <Content Include="Images\Menu\playbutton.png" />
     <Content Include="Images\Sprites\Balloons\Blue\big.png" />
     <Content Include="Images\Sprites\Balloons\Blue\biggest.png" />
     <Content Include="Images\Sprites\Player\right0.png" />
@@ -168,6 +173,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
