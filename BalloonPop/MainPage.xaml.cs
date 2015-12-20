@@ -1,4 +1,5 @@
-﻿using BalloonPop.ViewModels;
+﻿using BalloonPop.Data.DataModels;
+using BalloonPop.ViewModels;
 using BalloonPop.ViewModels.GameObjects.Balloons;
 using BalloonPop.ViewModels.GameObjects.Players;
 using System;
@@ -18,6 +19,11 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using SQLite.Net;
+using SQLite.Net.Async;
+using SQLite.Net.Platform.WinRT;
+using Windows.Storage;
+using System.Threading.Tasks;
 
 namespace BalloonPop
 {
@@ -30,6 +36,7 @@ namespace BalloonPop
             this.InitializeComponent();
             this.ViewModel = new MainPageViewModel();
             this.DataContext = this.ViewModel;
+            this.InitDb();
 
             ////Accelerometer
             //this.accelerometer = Accelerometer.GetDefault();
@@ -53,7 +60,7 @@ namespace BalloonPop
             {
                 e.Handled = true;
             }
-            
+
             this.InitializePlayerMoveAnimationTimerTick();
         }
 
@@ -80,7 +87,7 @@ namespace BalloonPop
         {
             var x = e.Position.X;
             var y = e.Position.Y;
-           
+
             if (x > JoystickViewModel.SizeConst || x < 0 || y < 0 || y > JoystickViewModel.SizeConst)
             {
                 this.PlayerMovementTimer.Stop();
@@ -122,7 +129,7 @@ namespace BalloonPop
             this.ViewModel.SetHookPosition(this.ViewModel.PlayerVM.Left + 10, PlayerViewModel.TopPostion);
             this.ViewModel.HookVM.Visible = true;
             this.ViewModel.PlayerVM.CanFire = false;
-        
+
             this.InitilizeWeaponMoveAnimationTimerTick();
 
             this.WeaponMovementTimer.Start();
@@ -145,21 +152,31 @@ namespace BalloonPop
             double velocity = 0;
             double topPosition;
             double leftPosition;
+            Balloon currentBalloon;
 
             fallTimer.Tick += (ob, ev) =>
             {
-                topPosition = this.ViewModel.Balloons.GetFirst().Top;
-                leftPosition = this.ViewModel.Balloons.GetFirst().Left;
+                currentBalloon = this.ViewModel.Balloons.GetFirst();
 
-                this.ViewModel.MoveBall();
+                topPosition = currentBalloon.Top;
+                leftPosition = currentBalloon.Left;
+
+                this.ViewModel.MoveBall(currentBalloon);
+
+                if (this.ViewModel.IsPlayerDestroyed())
+                {
+                    this.ViewModel.PlayerVM.IsAlive = false;
+                    this.EndGame();
+                }
+
 
                 if (leftPosition <= 0)
                 {
-                    this.ViewModel.Balloons.GetFirst().GoingLeft = false;
+                    currentBalloon.GoingLeft = false;
                 }
                 else if (leftPosition >= 400 + BigBlueBalloonViewModel.Size)
                 {
-                    this.ViewModel.Balloons.GetFirst().GoingLeft = true;
+                    currentBalloon.GoingLeft = true;
                 }
 
                 if (topPosition >= 240)
@@ -171,7 +188,7 @@ namespace BalloonPop
                 topPosition += velocity;
                 velocity += acellerationForce;
 
-                this.ViewModel.Balloons.GetFirst().Top = topPosition;
+                currentBalloon.Top = topPosition;
             };
 
             fallTimer.Start();
@@ -212,6 +229,7 @@ namespace BalloonPop
                 {
                     this.ViewModel.Balloons.GetFirst().Visible = true;
                     this.StopHook();
+                    this.ViewModel.PlayerVM.Score += 10;
                 }
 
                 if (this.ViewModel.HookVM.Top <= 0)
@@ -238,7 +256,7 @@ namespace BalloonPop
             }
         }
 
-       async private void ReadingChanged(object Accelerometer, AccelerometerReadingChangedEventArgs e)
+        async private void ReadingChanged(object Accelerometer, AccelerometerReadingChangedEventArgs e)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
@@ -267,6 +285,61 @@ namespace BalloonPop
 
                 this.MovePlayerIfPossible();
             });
+        }
+
+        private async void EndGame()
+        {
+            var score = this.ViewModel.PlayerVM.Score;
+
+            var playerScore = new PlayerScore
+            {
+                UserName = "Misho",
+                Score = score
+            };
+
+            await this.InsertPlayerScoreAsync(playerScore);
+        }
+
+        private SQLiteAsyncConnection GetDbConnectionAsync()
+        {
+            var dbFilePath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "db.sqlite");
+
+            var connectionFactory =
+                new Func<SQLiteConnectionWithLock>(
+                    () =>
+                    new SQLiteConnectionWithLock(
+                        new SQLitePlatformWinRT(),
+                        new SQLiteConnectionString(dbFilePath, storeDateTimeAsTicks: false)));
+
+            var asyncConnection = new SQLiteAsyncConnection(connectionFactory);
+
+            return asyncConnection;
+        }
+
+        private async void InitDb()
+        {
+            var connection = this.GetDbConnectionAsync();
+            await connection.CreateTableAsync<PlayerScore>();
+        }
+
+        private async Task<int> InsertPlayerScoreAsync(PlayerScore playerScore)
+        {
+            var connection = this.GetDbConnectionAsync();
+            var result = await connection.InsertAsync(playerScore);
+            return result;
+        }
+
+        private async Task<PlayerScore> GetPlayerScoreAsync()
+        {
+            var connection = this.GetDbConnectionAsync();
+            var result = await connection.Table<PlayerScore>().FirstOrDefaultAsync();
+            return result;
+        }
+
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var playerScore = await this.GetPlayerScoreAsync();
+            this.Score.Text = playerScore.ToString();
         }
     }
 }

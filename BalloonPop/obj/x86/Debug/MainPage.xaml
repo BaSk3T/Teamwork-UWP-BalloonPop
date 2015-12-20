@@ -82,7 +82,11 @@
 
         <Button x:ConnectionId='4'                      Canvas.Left="460" Canvas.Top="240" Content="Fall"/>
 
-        <Image x:ConnectionId='5' Visibility="{Binding HookVM.Visible, Converter={StaticResource BooleanVisibilityConverter}}"
+        <Button x:ConnectionId='5'                        Content="Result" Canvas.Left="50" Canvas.Top="50"/>
+
+        <TextBox x:ConnectionId='6' Name="Score" Canvas.Left="100" Canvas.Top="100"/>
+
+        <Image x:ConnectionId='7' Visibility="{Binding HookVM.Visible, Converter={StaticResource BooleanVisibilityConverter}}"
                Name="Hook"
                Source="{Binding HookVM.CurrentSprite}"
                Canvas.Left="{Binding HookVM.Left}"

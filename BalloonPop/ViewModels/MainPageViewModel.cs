@@ -70,15 +70,15 @@ namespace BalloonPop.ViewModels
             this.PlayerVM.CurrentSprite = this.PlayerVM.StandingStillSprite;
         }
 
-        public void MoveBall()
+        public void MoveBall(Balloon currentBalloon)
         {
-            if (this.BlueBalloonVM.GoingLeft)
+            if (currentBalloon.GoingLeft)
             {
-                this.Balloons.GetFirst().Left -= Balloon.SideVelocity;
+                currentBalloon.Left -= Balloon.SideVelocity;
             }
             else
             {
-                this.Balloons.GetFirst().Left += Balloon.SideVelocity;
+                currentBalloon.Left += Balloon.SideVelocity;
             }
         }
 
@@ -91,6 +91,19 @@ namespace BalloonPop.ViewModels
 
             return ((balloonLeft <= hookLeft && hookLeft + HookViewModel.ProjectileWidthConst <= balloonLeft + BiggestBlueBalloonViewModel.Size)
                     && (hookTop <= balloonTop && balloonTop + BiggestBlueBalloonViewModel.Size <= hookTop + HookViewModel.ProjectileHeightConst));
+        }
+
+        public bool IsPlayerDestroyed()
+        {
+            var balloonLeft = this.Balloons.GetFirst().Left;
+            var balloonTop = this.Balloons.GetFirst().Top;
+            var playerLeft = this.PlayerVM.Left;
+            var playerTop = this.PlayerVM.Top;
+
+            bool isPlayerHit = (balloonLeft <= playerLeft && playerLeft + PlayerViewModel.PlayerWidth <= balloonLeft + BiggestBlueBalloonViewModel.Size)
+                                && (balloonTop <= playerTop && playerTop <= balloonTop + BiggestBlueBalloonViewModel.Size);
+
+            return isPlayerHit;
         }
     }
 }
