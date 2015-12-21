@@ -22,13 +22,13 @@
     <AppXManifest Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-21T11:51:40.369</Modified>
+      <Modified>2015-12-21T13:41:28.281</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\bin\x86\Debug\BalloonPop.exe">
       <PackagePath>entrypoint\BalloonPop.exe</PackagePath>
-      <Modified>2015-12-21T11:51:39.925</Modified>
+      <Modified>2015-12-21T13:41:26.182</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\.nuget\packages\Microsoft.ApplicationInsights\1.0.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -472,129 +472,129 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\ApplicationInsights.config">
       <PackagePath>ApplicationInsights.config</PackagePath>
-      <Modified>2015-12-20T23:33:56.218</Modified>
+      <Modified>2015-12-21T13:16:11.572</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Animation\pop.jpg">
       <PackagePath>Images\Animation\pop.jpg</PackagePath>
-      <Modified>2015-12-21T08:54:23.390</Modified>
+      <Modified>2015-12-21T13:16:11.666</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Backgrounds\desert.png">
       <PackagePath>Images\Backgrounds\desert.png</PackagePath>
-      <Modified>2015-12-20T23:33:56.311</Modified>
+      <Modified>2015-12-21T13:16:11.666</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Menu\background.png">
       <PackagePath>Images\Menu\background.png</PackagePath>
-      <Modified>2015-12-20T23:33:56.317</Modified>
+      <Modified>2015-12-21T13:16:11.681</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Menu\playbutton.png">
       <PackagePath>Images\Menu\playbutton.png</PackagePath>
-      <Modified>2015-12-20T23:33:56.319</Modified>
+      <Modified>2015-12-21T13:16:11.681</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Sprites\Balloons\Blue\big.png">
       <PackagePath>Images\Sprites\Balloons\Blue\big.png</PackagePath>
-      <Modified>2015-12-20T23:33:56.326</Modified>
+      <Modified>2015-12-21T13:16:11.681</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Sprites\Balloons\Blue\biggest.png">
       <PackagePath>Images\Sprites\Balloons\Blue\biggest.png</PackagePath>
-      <Modified>2015-12-20T23:33:56.328</Modified>
+      <Modified>2015-12-21T13:16:11.681</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Sprites\Balloons\Blue\medium.png">
       <PackagePath>Images\Sprites\Balloons\Blue\medium.png</PackagePath>
-      <Modified>2015-12-21T11:32:49.840</Modified>
+      <Modified>2015-12-21T13:16:11.681</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Sprites\Player\right0.png">
       <PackagePath>Images\Sprites\Player\right0.png</PackagePath>
-      <Modified>2015-12-20T23:33:56.340</Modified>
+      <Modified>2015-12-21T13:16:11.697</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Sprites\Player\right1.png">
       <PackagePath>Images\Sprites\Player\right1.png</PackagePath>
-      <Modified>2015-12-20T23:33:56.344</Modified>
+      <Modified>2015-12-21T13:16:11.697</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Sprites\Player\right2.png">
       <PackagePath>Images\Sprites\Player\right2.png</PackagePath>
-      <Modified>2015-12-20T23:33:56.347</Modified>
+      <Modified>2015-12-21T13:16:11.697</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Sprites\Player\right3.png">
       <PackagePath>Images\Sprites\Player\right3.png</PackagePath>
-      <Modified>2015-12-20T23:33:56.349</Modified>
+      <Modified>2015-12-21T13:16:11.697</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Sprites\Player\left0.png">
       <PackagePath>Images\Sprites\Player\left0.png</PackagePath>
-      <Modified>2015-12-20T23:33:56.333</Modified>
+      <Modified>2015-12-21T13:16:11.681</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Sprites\Player\left1.png">
       <PackagePath>Images\Sprites\Player\left1.png</PackagePath>
-      <Modified>2015-12-20T23:33:56.334</Modified>
+      <Modified>2015-12-21T13:16:11.681</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Sprites\Player\left2.png">
       <PackagePath>Images\Sprites\Player\left2.png</PackagePath>
-      <Modified>2015-12-20T23:33:56.335</Modified>
+      <Modified>2015-12-21T13:16:11.681</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Sprites\Player\left3.png">
       <PackagePath>Images\Sprites\Player\left3.png</PackagePath>
-      <Modified>2015-12-20T23:33:56.336</Modified>
+      <Modified>2015-12-21T13:16:11.697</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Sprites\Player\default.png">
       <PackagePath>Images\Sprites\Player\default.png</PackagePath>
-      <Modified>2015-12-20T23:33:56.329</Modified>
+      <Modified>2015-12-21T13:16:11.681</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Sprites\Weapons\Hook\0.png">
       <PackagePath>Images\Sprites\Weapons\Hook\0.png</PackagePath>
-      <Modified>2015-12-20T23:33:56.351</Modified>
+      <Modified>2015-12-21T13:16:11.697</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Sprites\Weapons\Hook\1.png">
       <PackagePath>Images\Sprites\Weapons\Hook\1.png</PackagePath>
-      <Modified>2015-12-20T23:33:56.352</Modified>
+      <Modified>2015-12-21T13:16:11.713</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2015-12-20T23:33:56.219</Modified>
+      <Modified>2015-12-21T13:16:11.572</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-20T23:33:56.224</Modified>
+      <Modified>2015-12-21T13:16:11.588</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-20T23:33:56.228</Modified>
+      <Modified>2015-12-21T13:16:11.588</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-20T23:33:56.229</Modified>
+      <Modified>2015-12-21T13:16:11.588</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-20T23:33:56.230</Modified>
+      <Modified>2015-12-21T13:16:11.588</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-20T23:33:56.231</Modified>
+      <Modified>2015-12-21T13:16:11.588</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-20T23:33:56.232</Modified>
+      <Modified>2015-12-21T13:16:11.588</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Music\mainGameMusic.mp3">
       <PackagePath>Music\mainGameMusic.mp3</PackagePath>
-      <Modified>2015-12-20T23:33:56.402</Modified>
+      <Modified>2015-12-21T13:16:11.760</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Music\Minion.mp3">
       <PackagePath>Music\Minion.mp3</PackagePath>
-      <Modified>2015-12-20T23:33:56.370</Modified>
+      <Modified>2015-12-21T13:16:11.728</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2015-12-20T23:33:56.490</Modified>
+      <Modified>2015-12-21T13:16:11.838</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\bin\x86\Debug\BalloonPop.xr.xml">
       <PackagePath>BalloonPop.xr.xml</PackagePath>
-      <Modified>2015-12-21T10:53:19.034</Modified>
+      <Modified>2015-12-21T13:16:20.182</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -602,11 +602,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-12-21T11:37:03.392</Modified>
+      <Modified>2015-12-21T13:22:13.886</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\bin\x86\Debug\Core\BalloonPop.exe">
       <PackagePath>BalloonPop.exe</PackagePath>
-      <Modified>2015-12-21T11:51:40.363</Modified>
+      <Modified>2015-12-21T13:41:28.274</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

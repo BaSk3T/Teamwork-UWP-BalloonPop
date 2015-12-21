@@ -51,7 +51,13 @@ namespace BalloonPop.Pages
 
             if (playerScore != null)
             {
-                await this.ResultLocalDb.InsertPlayerScoreAsync(playerScore);
+                try
+                {
+                    await this.ResultLocalDb.InsertPlayerScoreAsync(playerScore);
+                }
+                catch (Exception)
+                {
+                }
             }
             
             this.LoadScores(playerScore);

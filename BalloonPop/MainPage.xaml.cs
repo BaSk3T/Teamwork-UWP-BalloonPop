@@ -235,7 +235,7 @@ namespace BalloonPop
                         continue;
                     }
 
-                    // Destroys balloon if interacted with projectile
+                    // Destroys balloon if interacted with projectile and creates 2 new if the balloon has children
                     if (this.ViewModel.IsBalloonDestroyed(currentBalloon))
                     {
                         currentBalloon.Popped = true;

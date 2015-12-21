@@ -90,10 +90,13 @@ namespace BalloonPop.ViewModels
             var balloonTop = this.Balloons.GetFirst().Top;
             var hookLeft = this.HookVM.Left;
             var hookTop = this.HookVM.Top;
+            var hookHeight = HookViewModel.ProjectileHeightConst;
+            var hookWidth = HookViewModel.ProjectileWidthConst;
 
             return (((balloonLeft <= hookLeft && hookLeft <= balloonLeft + sizeOfBalloon)
-                || (balloonLeft <=  hookLeft && hookLeft <= balloonLeft + sizeOfBalloon))
-                    && (balloonTop <= hookTop && hookTop <= balloonTop + sizeOfBalloon));
+                || (balloonLeft <=  hookLeft + hookWidth && hookLeft + hookWidth <= balloonLeft + sizeOfBalloon))
+                    && ((balloonTop + sizeOfBalloon <= hookTop + hookHeight && balloonTop + sizeOfBalloon >= hookTop)
+                    || (balloonTop <= hookTop && hookTop <= balloonTop + sizeOfBalloon)));
         }
 
         public bool IsPlayerDestroyed(Balloon balloon)
