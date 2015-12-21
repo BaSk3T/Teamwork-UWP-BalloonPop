@@ -24,12 +24,11 @@
             this.WalkingRightSprites = new BitmapSource[WalkingFrames];
             this.LoadSprites();
             this.CurrentSprite = this.StandingStillSprite;
-            this.CanFire = true;
-            this.Visible = true;
             this.Top = TopPostion;
             this.Left = LeftPosition;
-            this.SetInitialScore();
             this.IsAlive = true;
+            this.CanFire = false;
+            this.Visible = true;
         }
 
         public bool IsAlive { get; set; }
@@ -72,11 +71,6 @@
                 this.WalkingLeftSprites[frameCount] = (BitmapSource)Application.Current.Resources[WalkingLeftSpriteName + frameCount];
                 this.WalkingRightSprites[frameCount] = (BitmapSource)Application.Current.Resources[WalkingRightSpriteName + frameCount];
             }
-        }
-
-        public void SetInitialScore()
-        {
-            this.Score = 0;
         }
     }
 }

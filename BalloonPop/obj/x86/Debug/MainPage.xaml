@@ -80,9 +80,8 @@
 
         <Button x:ConnectionId='3'                     Canvas.Left="410" Canvas.Top="240" Content="Fire"/>
 
-        <Button x:ConnectionId='4'                      Canvas.Left="460" Canvas.Top="240" Content="Fall"/>
-
-        <StackPanel Canvas.Left="200" Canvas.Top="90">
+        <TextBlock x:ConnectionId='4' Canvas.ZIndex="2" Canvas.Left="135" Canvas.Top="70" Name="WrongName" Foreground="Red" Visibility="Collapsed" Text="Name can only contain A-Z a-z 0-9 !"/>
+        <StackPanel Canvas.ZIndex="2" Canvas.Left="200" Canvas.Top="90">
             <TextBox x:ConnectionId='6' Name="NameOfPlayer" Visibility="Collapsed" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <Button x:ConnectionId='7' Name="NameSubmiter"                   Visibility="Collapsed" Width="100"  Content="Enter" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </StackPanel>

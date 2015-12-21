@@ -17,7 +17,7 @@ namespace BalloonPop.ViewModels.GameObjects.Balloons
             this.balloons = new ObservableCollection<Balloon>();
         }
 
-        public IEnumerable<Balloon> Balloons
+        public ICollection<Balloon> Balloons
         {
             get
             {

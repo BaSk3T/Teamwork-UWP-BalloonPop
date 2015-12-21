@@ -13,6 +13,12 @@ namespace BalloonPop.ViewModels.GameObjects.Balloons
         protected Balloon()
         {
             this.Visible = true;
+            this.Popped = false;
+            this.CurrentVelocity = 0;
         }
+
+        public bool Popped { get; set; }
+
+        public double CurrentVelocity { get; set; }
     }
 }

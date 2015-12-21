@@ -1,0 +1,71 @@
+﻿<Page
+    x:Class="BalloonPop.Pages.Authors"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BalloonPop.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Canvas>
+        <Canvas.Background>
+            <ImageBrush ImageSource="../Images/Menu/background.png"/>
+        </Canvas.Background>
+
+        <TextBlock Text="AUTHORS" 
+                   Canvas.Left="150" 
+                   Canvas.Top="10" 
+                   FontWeight="ExtraBold" 
+                   FontSize="30" 
+                   Foreground="Brown"/>
+
+        <TextBlock Text="Vasil Valkov"
+                   Canvas.Left="90"
+                   Canvas.Top="100"
+                   Foreground="Brown"
+                   FontWeight="ExtraBold"/>
+
+        <TextBlock Canvas.Left="300"
+                   Canvas.Top="100">
+            <Hyperlink NavigateUri="https://github.com/BaSk3T">
+                GitHub
+            </Hyperlink>
+        </TextBlock>
+
+        <TextBlock Text="Elina Samardjieva"
+                   Canvas.Left="90"
+                   Canvas.Top="130"
+                   Foreground="Brown"
+                   FontWeight="ExtraBold"/>
+
+        <TextBlock Canvas.Left="300"
+                   Canvas.Top="130">
+            <Hyperlink NavigateUri="https://github.com/ElinaSamardjieva">
+                GitHub
+            </Hyperlink>
+        </TextBlock>
+
+        <TextBlock Text="Game Repository"
+                   Canvas.Left="90"
+                   Canvas.Top="180"
+                   Foreground="Brown"
+                   FontWeight="ExtraBold"/>
+
+        <TextBlock Canvas.Left="300"
+                   Canvas.Top="180">
+            <Hyperlink NavigateUri="https://github.com/BaSk3T/Teamwork-WUP-BalloonPop">
+                GitHub
+            </Hyperlink>
+        </TextBlock>
+
+        <Button x:ConnectionId='1' Background="Brown" 
+                Foreground="White"
+                Canvas.Left="120"
+                Canvas.Top="250"
+                Width="200"
+                Height="35"
+                Content="Back to Menu"
+                                    />
+    </Canvas>
+</Page>
+

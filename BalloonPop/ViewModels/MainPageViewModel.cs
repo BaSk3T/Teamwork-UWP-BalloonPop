@@ -20,13 +20,9 @@ namespace BalloonPop.ViewModels
 
             this.PlayerVM = new PlayerViewModel();
 
-            this.BlueBalloonVM = new BiggestBlueBalloonViewModel();
-            this.BlueBalloonVM.Left = 150;
-            this.BlueBalloonVM.Top = 100;
-
             this.Balloons = new AllBalloons();
-            this.Balloons.Add(this.BlueBalloonVM);
-            this.Balloons.Add(new BiggestBlueBalloonViewModel { Left = 150, Top = 150 });
+            this.Balloons.Add(new BiggestBlueBalloonViewModel { Left = 200, Top = 10 });
+            this.Balloons.Add(new BiggestBlueBalloonViewModel { Left = 150, Top = 10, GoingLeft = true });
         }
         public JoystickViewModel JoystickVM { get; set; }
 
@@ -35,8 +31,6 @@ namespace BalloonPop.ViewModels
         public PlayerViewModel PlayerVM { get; set; }
 
         public AllBalloons Balloons { get; set; }
-
-        public BiggestBlueBalloonViewModel BlueBalloonVM { get; set; }
 
         public void UpdateHook()
         {
@@ -82,29 +76,50 @@ namespace BalloonPop.ViewModels
             }
         }
 
-        public bool IsBalloonDestroyed()
+        public bool IsBalloonDestroyed(Balloon balloon)
         {
+            var sizeOfBalloon = this.GetSizeOfBalloon(balloon);
+
             var balloonLeft = this.Balloons.GetFirst().Left;
             var balloonTop = this.Balloons.GetFirst().Top;
             var hookLeft = this.HookVM.Left;
             var hookTop = this.HookVM.Top;
 
-            return ((balloonLeft <= hookLeft && hookLeft + HookViewModel.ProjectileWidthConst <= balloonLeft + BiggestBlueBalloonViewModel.Size)
-                    && (hookTop <= balloonTop && balloonTop + BiggestBlueBalloonViewModel.Size <= hookTop + HookViewModel.ProjectileHeightConst));
+            return ((balloonLeft <= hookLeft && hookLeft + HookViewModel.ProjectileWidthConst <= balloonLeft + sizeOfBalloon)
+                    && (hookTop <= balloonTop && balloonTop + sizeOfBalloon <= hookTop + HookViewModel.ProjectileHeightConst));
         }
 
-        public bool IsPlayerDestroyed()
+        public bool IsPlayerDestroyed(Balloon balloon)
         {
-            var balloonLeft = this.Balloons.GetFirst().Left;
-            var balloonTop = this.Balloons.GetFirst().Top;
+            var sizeOfBalloon = this.GetSizeOfBalloon(balloon);
+
+            var balloonLeft = balloon.Left;
+            var balloonTop = balloon.Top;
             var playerLeft = this.PlayerVM.Left;
             var playerTop = this.PlayerVM.Top;
 
-            bool isPlayerHit = (balloonLeft <= playerLeft && playerLeft <= balloonLeft + BiggestBlueBalloonViewModel.Size
-                || balloonLeft <= playerLeft + PlayerViewModel.PlayerWidth && playerLeft + PlayerViewModel.PlayerWidth <= balloonLeft + BiggestBlueBalloonViewModel.Size)
-                                && (playerTop <= balloonTop + BiggestBlueBalloonViewModel.Size);
+            bool isPlayerHit =
+                (balloonLeft <= playerLeft && playerLeft <= balloonLeft + sizeOfBalloon ||
+                 balloonLeft <= playerLeft + PlayerViewModel.PlayerWidth && playerLeft + PlayerViewModel.PlayerWidth <= balloonLeft + sizeOfBalloon) &&
+                (playerTop <= balloonTop + sizeOfBalloon);
 
             return isPlayerHit;
+        }
+
+        public double GetSizeOfBalloon(Balloon balloon)
+        {
+            double sizeOfBalloon = 0;
+
+            if (typeof(BiggestBlueBalloonViewModel) == balloon.GetType())
+            {
+                sizeOfBalloon = BiggestBlueBalloonViewModel.Size;
+            }
+            else if (typeof(BigBlueBalloonViewModel) == balloon.GetType())
+            {
+                sizeOfBalloon = BigBlueBalloonViewModel.Size;
+            }
+
+            return sizeOfBalloon;
         }
     }
 }

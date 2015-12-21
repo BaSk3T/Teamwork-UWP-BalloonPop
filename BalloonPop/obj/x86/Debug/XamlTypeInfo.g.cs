@@ -132,7 +132,7 @@ namespace BalloonPop.BalloonPop_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[19];
+            _typeNameTable = new string[20];
             _typeNameTable[0] = "BalloonPop.Helpers.Converters.VisibilityConverter";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "BalloonPop.CustomControls.Joystick";
@@ -144,16 +144,17 @@ namespace BalloonPop.BalloonPop_XamlTypeInfo
             _typeNameTable[8] = "Windows.UI.Xaml.DependencyObject";
             _typeNameTable[9] = "BalloonPop.MainPage";
             _typeNameTable[10] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[11] = "BalloonPop.ViewModels.MainPageViewModel";
-            _typeNameTable[12] = "BalloonPop.ViewModels.ViewModelBase";
-            _typeNameTable[13] = "Windows.UI.Xaml.DispatcherTimer";
-            _typeNameTable[14] = "BalloonPop.Pages.Authors";
-            _typeNameTable[15] = "BalloonPop.Pages.Menu";
-            _typeNameTable[16] = "BalloonPop.Pages.ResultPage";
-            _typeNameTable[17] = "BalloonPop.ViewModels.Scores.AllScoresViewModel";
-            _typeNameTable[18] = "BalloonPop.Data.ResultLocalDb";
+            _typeNameTable[11] = "Boolean";
+            _typeNameTable[12] = "BalloonPop.ViewModels.MainPageViewModel";
+            _typeNameTable[13] = "BalloonPop.ViewModels.ViewModelBase";
+            _typeNameTable[14] = "Windows.UI.Xaml.DispatcherTimer";
+            _typeNameTable[15] = "BalloonPop.Pages.Authors";
+            _typeNameTable[16] = "BalloonPop.Pages.Menu";
+            _typeNameTable[17] = "BalloonPop.Pages.ResultPage";
+            _typeNameTable[18] = "BalloonPop.ViewModels.Scores.AllScoresViewModel";
+            _typeNameTable[19] = "BalloonPop.Data.ResultLocalDb";
 
-            _typeTable = new global::System.Type[19];
+            _typeTable = new global::System.Type[20];
             _typeTable[0] = typeof(global::BalloonPop.Helpers.Converters.VisibilityConverter);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::BalloonPop.CustomControls.Joystick);
@@ -165,14 +166,15 @@ namespace BalloonPop.BalloonPop_XamlTypeInfo
             _typeTable[8] = typeof(global::Windows.UI.Xaml.DependencyObject);
             _typeTable[9] = typeof(global::BalloonPop.MainPage);
             _typeTable[10] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[11] = typeof(global::BalloonPop.ViewModels.MainPageViewModel);
-            _typeTable[12] = typeof(global::BalloonPop.ViewModels.ViewModelBase);
-            _typeTable[13] = typeof(global::Windows.UI.Xaml.DispatcherTimer);
-            _typeTable[14] = typeof(global::BalloonPop.Pages.Authors);
-            _typeTable[15] = typeof(global::BalloonPop.Pages.Menu);
-            _typeTable[16] = typeof(global::BalloonPop.Pages.ResultPage);
-            _typeTable[17] = typeof(global::BalloonPop.ViewModels.Scores.AllScoresViewModel);
-            _typeTable[18] = typeof(global::BalloonPop.Data.ResultLocalDb);
+            _typeTable[11] = typeof(global::System.Boolean);
+            _typeTable[12] = typeof(global::BalloonPop.ViewModels.MainPageViewModel);
+            _typeTable[13] = typeof(global::BalloonPop.ViewModels.ViewModelBase);
+            _typeTable[14] = typeof(global::Windows.UI.Xaml.DispatcherTimer);
+            _typeTable[15] = typeof(global::BalloonPop.Pages.Authors);
+            _typeTable[16] = typeof(global::BalloonPop.Pages.Menu);
+            _typeTable[17] = typeof(global::BalloonPop.Pages.ResultPage);
+            _typeTable[18] = typeof(global::BalloonPop.ViewModels.Scores.AllScoresViewModel);
+            _typeTable[19] = typeof(global::BalloonPop.Data.ResultLocalDb);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -211,13 +213,13 @@ namespace BalloonPop.BalloonPop_XamlTypeInfo
         private object Activate_2_Joystick() { return new global::BalloonPop.CustomControls.Joystick(); }
         private object Activate_6_BindingHelper() { return new global::BalloonPop.Helpers.BindingHelper(); }
         private object Activate_9_MainPage() { return new global::BalloonPop.MainPage(); }
-        private object Activate_11_MainPageViewModel() { return new global::BalloonPop.ViewModels.MainPageViewModel(); }
-        private object Activate_12_ViewModelBase() { return new global::BalloonPop.ViewModels.ViewModelBase(); }
-        private object Activate_14_Authors() { return new global::BalloonPop.Pages.Authors(); }
-        private object Activate_15_Menu() { return new global::BalloonPop.Pages.Menu(); }
-        private object Activate_16_ResultPage() { return new global::BalloonPop.Pages.ResultPage(); }
-        private object Activate_17_AllScoresViewModel() { return new global::BalloonPop.ViewModels.Scores.AllScoresViewModel(); }
-        private object Activate_18_ResultLocalDb() { return new global::BalloonPop.Data.ResultLocalDb(); }
+        private object Activate_12_MainPageViewModel() { return new global::BalloonPop.ViewModels.MainPageViewModel(); }
+        private object Activate_13_ViewModelBase() { return new global::BalloonPop.ViewModels.ViewModelBase(); }
+        private object Activate_15_Authors() { return new global::BalloonPop.Pages.Authors(); }
+        private object Activate_16_Menu() { return new global::BalloonPop.Pages.Menu(); }
+        private object Activate_17_ResultPage() { return new global::BalloonPop.Pages.ResultPage(); }
+        private object Activate_18_AllScoresViewModel() { return new global::BalloonPop.ViewModels.Scores.AllScoresViewModel(); }
+        private object Activate_19_ResultLocalDb() { return new global::BalloonPop.Data.ResultLocalDb(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -283,6 +285,7 @@ namespace BalloonPop.BalloonPop_XamlTypeInfo
             case 9:   //  BalloonPop.MainPage
                 userType = new global::BalloonPop.BalloonPop_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_9_MainPage;
+                userType.AddMemberName("BalloonsInitiated");
                 userType.AddMemberName("ViewModel");
                 userType.AddMemberName("PlayerMovementTimer");
                 userType.AddMemberName("WeaponMovementTimer");
@@ -294,55 +297,59 @@ namespace BalloonPop.BalloonPop_XamlTypeInfo
                 xamlType = new global::BalloonPop.BalloonPop_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 11:   //  BalloonPop.ViewModels.MainPageViewModel
+            case 11:   //  Boolean
+                xamlType = new global::BalloonPop.BalloonPop_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 12:   //  BalloonPop.ViewModels.MainPageViewModel
                 userType = new global::BalloonPop.BalloonPop_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("BalloonPop.ViewModels.ViewModelBase"));
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 12:   //  BalloonPop.ViewModels.ViewModelBase
+            case 13:   //  BalloonPop.ViewModels.ViewModelBase
                 userType = new global::BalloonPop.BalloonPop_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_12_ViewModelBase;
+                userType.Activator = Activate_13_ViewModelBase;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 13:   //  Windows.UI.Xaml.DispatcherTimer
+            case 14:   //  Windows.UI.Xaml.DispatcherTimer
                 xamlType = new global::BalloonPop.BalloonPop_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 14:   //  BalloonPop.Pages.Authors
+            case 15:   //  BalloonPop.Pages.Authors
                 userType = new global::BalloonPop.BalloonPop_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_14_Authors;
+                userType.Activator = Activate_15_Authors;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 15:   //  BalloonPop.Pages.Menu
+            case 16:   //  BalloonPop.Pages.Menu
                 userType = new global::BalloonPop.BalloonPop_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_15_Menu;
+                userType.Activator = Activate_16_Menu;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 16:   //  BalloonPop.Pages.ResultPage
+            case 17:   //  BalloonPop.Pages.ResultPage
                 userType = new global::BalloonPop.BalloonPop_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_16_ResultPage;
+                userType.Activator = Activate_17_ResultPage;
                 userType.AddMemberName("ScoresVM");
                 userType.AddMemberName("ResultLocalDb");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 17:   //  BalloonPop.ViewModels.Scores.AllScoresViewModel
+            case 18:   //  BalloonPop.ViewModels.Scores.AllScoresViewModel
                 userType = new global::BalloonPop.BalloonPop_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("BalloonPop.ViewModels.ViewModelBase"));
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 18:   //  BalloonPop.Data.ResultLocalDb
+            case 19:   //  BalloonPop.Data.ResultLocalDb
                 userType = new global::BalloonPop.BalloonPop_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
@@ -409,52 +416,62 @@ namespace BalloonPop.BalloonPop_XamlTypeInfo
         {
             global::BalloonPop.Helpers.BindingHelper.SetCanvasTopBindingPath((global::Windows.UI.Xaml.DependencyObject)instance, (global::System.String)Value);
         }
-        private object get_6_MainPage_ViewModel(object instance)
+        private object get_6_MainPage_BalloonsInitiated(object instance)
+        {
+            var that = (global::BalloonPop.MainPage)instance;
+            return that.BalloonsInitiated;
+        }
+        private void set_6_MainPage_BalloonsInitiated(object instance, object Value)
+        {
+            var that = (global::BalloonPop.MainPage)instance;
+            that.BalloonsInitiated = (global::System.Boolean)Value;
+        }
+        private object get_7_MainPage_ViewModel(object instance)
         {
             var that = (global::BalloonPop.MainPage)instance;
             return that.ViewModel;
         }
-        private void set_6_MainPage_ViewModel(object instance, object Value)
+        private void set_7_MainPage_ViewModel(object instance, object Value)
         {
             var that = (global::BalloonPop.MainPage)instance;
             that.ViewModel = (global::BalloonPop.ViewModels.MainPageViewModel)Value;
         }
-        private object get_7_MainPage_PlayerMovementTimer(object instance)
+        private object get_8_MainPage_PlayerMovementTimer(object instance)
         {
             var that = (global::BalloonPop.MainPage)instance;
             return that.PlayerMovementTimer;
         }
-        private void set_7_MainPage_PlayerMovementTimer(object instance, object Value)
+        private void set_8_MainPage_PlayerMovementTimer(object instance, object Value)
         {
             var that = (global::BalloonPop.MainPage)instance;
             that.PlayerMovementTimer = (global::Windows.UI.Xaml.DispatcherTimer)Value;
         }
-        private object get_8_MainPage_WeaponMovementTimer(object instance)
+        private object get_9_MainPage_WeaponMovementTimer(object instance)
         {
             var that = (global::BalloonPop.MainPage)instance;
             return that.WeaponMovementTimer;
         }
-        private void set_8_MainPage_WeaponMovementTimer(object instance, object Value)
+        private void set_9_MainPage_WeaponMovementTimer(object instance, object Value)
         {
             var that = (global::BalloonPop.MainPage)instance;
             that.WeaponMovementTimer = (global::Windows.UI.Xaml.DispatcherTimer)Value;
         }
-        private object get_9_ResultPage_ScoresVM(object instance)
+        private object get_10_ResultPage_ScoresVM(object instance)
         {
             var that = (global::BalloonPop.Pages.ResultPage)instance;
             return that.ScoresVM;
         }
-        private void set_9_ResultPage_ScoresVM(object instance, object Value)
+        private void set_10_ResultPage_ScoresVM(object instance, object Value)
         {
             var that = (global::BalloonPop.Pages.ResultPage)instance;
             that.ScoresVM = (global::BalloonPop.ViewModels.Scores.AllScoresViewModel)Value;
         }
-        private object get_10_ResultPage_ResultLocalDb(object instance)
+        private object get_11_ResultPage_ResultLocalDb(object instance)
         {
             var that = (global::BalloonPop.Pages.ResultPage)instance;
             return that.ResultLocalDb;
         }
-        private void set_10_ResultPage_ResultLocalDb(object instance, object Value)
+        private void set_11_ResultPage_ResultLocalDb(object instance, object Value)
         {
             var that = (global::BalloonPop.Pages.ResultPage)instance;
             that.ResultLocalDb = (global::BalloonPop.Data.ResultLocalDb)Value;
@@ -511,35 +528,41 @@ namespace BalloonPop.BalloonPop_XamlTypeInfo
                 xamlMember.Getter = get_5_BindingHelper_CanvasTopBindingPath;
                 xamlMember.Setter = set_5_BindingHelper_CanvasTopBindingPath;
                 break;
+            case "BalloonPop.MainPage.BalloonsInitiated":
+                userType = (global::BalloonPop.BalloonPop_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BalloonPop.MainPage");
+                xamlMember = new global::BalloonPop.BalloonPop_XamlTypeInfo.XamlMember(this, "BalloonsInitiated", "Boolean");
+                xamlMember.Getter = get_6_MainPage_BalloonsInitiated;
+                xamlMember.Setter = set_6_MainPage_BalloonsInitiated;
+                break;
             case "BalloonPop.MainPage.ViewModel":
                 userType = (global::BalloonPop.BalloonPop_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BalloonPop.MainPage");
                 xamlMember = new global::BalloonPop.BalloonPop_XamlTypeInfo.XamlMember(this, "ViewModel", "BalloonPop.ViewModels.MainPageViewModel");
-                xamlMember.Getter = get_6_MainPage_ViewModel;
-                xamlMember.Setter = set_6_MainPage_ViewModel;
+                xamlMember.Getter = get_7_MainPage_ViewModel;
+                xamlMember.Setter = set_7_MainPage_ViewModel;
                 break;
             case "BalloonPop.MainPage.PlayerMovementTimer":
                 userType = (global::BalloonPop.BalloonPop_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BalloonPop.MainPage");
                 xamlMember = new global::BalloonPop.BalloonPop_XamlTypeInfo.XamlMember(this, "PlayerMovementTimer", "Windows.UI.Xaml.DispatcherTimer");
-                xamlMember.Getter = get_7_MainPage_PlayerMovementTimer;
-                xamlMember.Setter = set_7_MainPage_PlayerMovementTimer;
+                xamlMember.Getter = get_8_MainPage_PlayerMovementTimer;
+                xamlMember.Setter = set_8_MainPage_PlayerMovementTimer;
                 break;
             case "BalloonPop.MainPage.WeaponMovementTimer":
                 userType = (global::BalloonPop.BalloonPop_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BalloonPop.MainPage");
                 xamlMember = new global::BalloonPop.BalloonPop_XamlTypeInfo.XamlMember(this, "WeaponMovementTimer", "Windows.UI.Xaml.DispatcherTimer");
-                xamlMember.Getter = get_8_MainPage_WeaponMovementTimer;
-                xamlMember.Setter = set_8_MainPage_WeaponMovementTimer;
+                xamlMember.Getter = get_9_MainPage_WeaponMovementTimer;
+                xamlMember.Setter = set_9_MainPage_WeaponMovementTimer;
                 break;
             case "BalloonPop.Pages.ResultPage.ScoresVM":
                 userType = (global::BalloonPop.BalloonPop_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BalloonPop.Pages.ResultPage");
                 xamlMember = new global::BalloonPop.BalloonPop_XamlTypeInfo.XamlMember(this, "ScoresVM", "BalloonPop.ViewModels.Scores.AllScoresViewModel");
-                xamlMember.Getter = get_9_ResultPage_ScoresVM;
-                xamlMember.Setter = set_9_ResultPage_ScoresVM;
+                xamlMember.Getter = get_10_ResultPage_ScoresVM;
+                xamlMember.Setter = set_10_ResultPage_ScoresVM;
                 break;
             case "BalloonPop.Pages.ResultPage.ResultLocalDb":
                 userType = (global::BalloonPop.BalloonPop_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BalloonPop.Pages.ResultPage");
                 xamlMember = new global::BalloonPop.BalloonPop_XamlTypeInfo.XamlMember(this, "ResultLocalDb", "BalloonPop.Data.ResultLocalDb");
-                xamlMember.Getter = get_10_ResultPage_ResultLocalDb;
-                xamlMember.Setter = set_10_ResultPage_ResultLocalDb;
+                xamlMember.Getter = get_11_ResultPage_ResultLocalDb;
+                xamlMember.Setter = set_11_ResultPage_ResultLocalDb;
                 break;
             }
             return xamlMember;

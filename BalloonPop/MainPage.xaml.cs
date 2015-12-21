@@ -25,6 +25,7 @@ using SQLite.Net.Platform.WinRT;
 using Windows.Storage;
 using System.Threading.Tasks;
 using BalloonPop.Pages;
+using System.Text.RegularExpressions;
 
 namespace BalloonPop
 {
@@ -37,12 +38,15 @@ namespace BalloonPop
             this.InitializeComponent();
             this.ViewModel = new MainPageViewModel();
             this.DataContext = this.ViewModel;
-
+            this.BalloonsInitiated = false;
+            
             ////Accelerometer
             //this.accelerometer = Accelerometer.GetDefault();
             //this.accelerometer.ReportInterval = 50;
             //this.accelerometer.ReadingChanged += new TypedEventHandler<Accelerometer, AccelerometerReadingChangedEventArgs>(ReadingChanged);
         }
+
+        public bool BalloonsInitiated { get; set; }
 
         public MainPageViewModel ViewModel { get; set; }
 
@@ -55,6 +59,13 @@ namespace BalloonPop
             if (e.PointerDeviceType != PointerDeviceType.Touch)
             {
                 e.Handled = true;
+            }
+
+            if (!this.BalloonsInitiated)
+            {
+                this.BalloonsInitiated = true;
+                this.ViewModel.PlayerVM.CanFire = true;
+                this.StartBalloons();
             }
 
             this.InitializePlayerMoveAnimationTimerTick();
@@ -135,56 +146,54 @@ namespace BalloonPop
         {
             // Stops animation of projectile
             this.WeaponMovementTimer.Stop();
+            this.ViewModel.SetHookPosition(this.ViewModel.PlayerVM.Left + 10, PlayerViewModel.TopPostion);
             this.ViewModel.HookVM.Visible = false;
             this.ViewModel.PlayerVM.CanFire = true;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void StartBalloons()
         {
             var fallTimer = new DispatcherTimer();
             fallTimer.Interval = TimeSpan.FromSeconds(1.0 / 50.0);
 
             double acellerationForce = 1;
-            double velocity = 0;
-            double topPosition;
-            double leftPosition;
-            Balloon currentBalloon;
 
             fallTimer.Tick += (ob, ev) =>
             {
-                currentBalloon = this.ViewModel.Balloons.GetFirst();
-
-                topPosition = currentBalloon.Top;
-                leftPosition = currentBalloon.Left;
-
-                this.ViewModel.MoveBall(currentBalloon);
-
-                if (this.ViewModel.IsPlayerDestroyed())
+                foreach (var currentBalloon in this.ViewModel.Balloons.Balloons)
                 {
-                    this.ViewModel.PlayerVM.IsAlive = false;
-                    fallTimer.Stop();
-                    this.EndGame();
-                }
+                    if (currentBalloon.Popped)
+                    {
+                        continue;
+                    }
 
-                if (leftPosition <= 0)
-                {
-                    currentBalloon.GoingLeft = false;
-                }
-                else if (leftPosition >= 400 + BigBlueBalloonViewModel.Size)
-                {
-                    currentBalloon.GoingLeft = true;
-                }
+                    this.ViewModel.MoveBall(currentBalloon);
 
-                if (topPosition >= 240)
-                {
-                    topPosition = 240;
-                    velocity = BiggestBlueBalloonViewModel.Velocity;
+                    if (this.ViewModel.IsPlayerDestroyed(currentBalloon))
+                    {
+                        this.ViewModel.PlayerVM.IsAlive = false;
+                        fallTimer.Stop();
+                        this.EndGame();
+                    }
+
+                    if (currentBalloon.Left <= 0)
+                    {
+                        currentBalloon.GoingLeft = false;
+                    }
+                    else if (currentBalloon.Left >= 400 + this.ViewModel.GetSizeOfBalloon(currentBalloon))
+                    {
+                        currentBalloon.GoingLeft = true;
+                    }
+
+                    if (currentBalloon.Top >= 240)
+                    {
+                        currentBalloon.Top = 240;
+                        currentBalloon.CurrentVelocity = this.GetVelocityOfBalloon(currentBalloon);
+                    }
+
+                    currentBalloon.Top += currentBalloon.CurrentVelocity;
+                    currentBalloon.CurrentVelocity += acellerationForce;
                 }
-
-                topPosition += velocity;
-                velocity += acellerationForce;
-
-                currentBalloon.Top = topPosition;
             };
 
             fallTimer.Start();
@@ -220,12 +229,21 @@ namespace BalloonPop
                 // Updates position of projectile
                 this.ViewModel.UpdateHook();
 
-                // Destroys balloon if interacted with projectile
-                if (this.ViewModel.IsBalloonDestroyed())
+                foreach (var currentBalloon in this.ViewModel.Balloons.Balloons)
                 {
-                    this.ViewModel.Balloons.GetFirst().Visible = true;
-                    this.StopHook();
-                    this.ViewModel.PlayerVM.Score += 10;
+                    if (currentBalloon.Popped)
+                    {
+                        continue;
+                    }
+
+                    // Destroys balloon if interacted with projectile
+                    if (this.ViewModel.IsBalloonDestroyed(currentBalloon))
+                    {
+                        currentBalloon.Popped = true;
+                        currentBalloon.Visible = false;
+                        this.StopHook();
+                        this.ViewModel.PlayerVM.Score += 10;
+                    }
                 }
 
                 if (this.ViewModel.HookVM.Top <= 0)
@@ -254,6 +272,13 @@ namespace BalloonPop
 
         async private void ReadingChanged(object Accelerometer, AccelerometerReadingChangedEventArgs e)
         {
+            if (!this.BalloonsInitiated)
+            {
+                this.ViewModel.PlayerVM.CanFire = true;
+                this.BalloonsInitiated = true;
+                this.StartBalloons();
+            }
+
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
                 AccelerometerReading reading = e.Reading;
@@ -285,6 +310,7 @@ namespace BalloonPop
 
         private void EndGame()
         {
+            this.ViewModel.PlayerVM.CanFire = false;
             this.NameOfPlayer.Visibility = Visibility.Visible;
             this.NameSubmiter.Visibility = Visibility.Visible;
         }
@@ -294,6 +320,14 @@ namespace BalloonPop
             var score = this.ViewModel.PlayerVM.Score;
             var username = this.NameOfPlayer.Text;
 
+            Regex regex = new Regex("^[a-zA-Z0-9]*$");
+
+            if (!regex.IsMatch(username) || username == String.Empty)
+            {
+                this.WrongName.Visibility = Visibility.Visible;
+                return;
+            }
+
             var playerScore = new PlayerScore
             {
                 UserName = username,
@@ -301,6 +335,22 @@ namespace BalloonPop
             };
 
             this.Frame.Navigate(typeof(ResultPage), playerScore);
+        }
+
+        private double GetVelocityOfBalloon(Balloon balloon)
+        {
+            double velocity = 0;
+
+            if (typeof(BiggestBlueBalloonViewModel) == balloon.GetType())
+            {
+                velocity = BiggestBlueBalloonViewModel.Velocity;
+            }
+            else if (typeof(BigBlueBalloonViewModel) == balloon.GetType())
+            {
+                velocity = BigBlueBalloonViewModel.Velocity;
+            }
+            
+            return velocity;
         }
     }
 }
