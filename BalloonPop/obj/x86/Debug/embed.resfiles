@@ -1,6 +1,7 @@
 App.xbf
 CustomControls\Joystick.xbf
 MainPage.xbf
+Pages\Animation.xbf
 Pages\Authors.xbf
 Pages\Menu.xbf
 Pages\ResultPage.xbf

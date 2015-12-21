@@ -36,6 +36,7 @@
     <RootType FullName="Windows.UI.Xaml.Controls.Canvas">
       <RootProperty Name="Children" />
       <RootProperty Name="Background" />
+      <RootProperty Name="Resources" />
       <RootMethod Name="GetZIndex" />
       <RootMethod Name="SetZIndex" />
       <RootMethod Name="GetLeft" />
@@ -78,6 +79,7 @@
       <RootProperty Name="Source" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="Name" />
+      <RootProperty Name="Opacity" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Data.Binding">
       <RootProperty Name="Converter" />
@@ -114,8 +116,8 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Background" />
-      <RootProperty Name="Foreground" />
       <RootProperty Name="Height" />
+      <RootProperty Name="Foreground" />
       <RootProperty Name="Template" />
       <RootProperty Name="FontWeight" />
       <RootEvent Name="Click" />
@@ -143,6 +145,19 @@
       <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="BalloonPop.MainPage" />
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.Storyboard">
+      <RootProperty Name="Children" />
+      <RootMethod Name="GetTargetName" />
+      <RootMethod Name="SetTargetName" />
+      <RootMethod Name="GetTargetProperty" />
+      <RootMethod Name="SetTargetProperty" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.DoubleAnimation">
+      <RootProperty Name="From" />
+      <RootProperty Name="To" />
+      <RootProperty Name="Duration" />
+    </RootType>
+    <RootType FullName="BalloonPop.Pages.Animation" />
     <RootType FullName="Windows.UI.Xaml.Media.ImageBrush">
       <RootProperty Name="ImageSource" />
     </RootType>

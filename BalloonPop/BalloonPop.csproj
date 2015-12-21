@@ -111,6 +111,9 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Animation.xaml.cs">
+      <DependentUpon>Animation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Authors.xaml.cs">
       <DependentUpon>Authors.xaml</DependentUpon>
     </Compile>
@@ -143,6 +146,7 @@
     <None Include="BalloonPop_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\Animation\pop.jpg" />
     <Content Include="Images\Backgrounds\desert.png" />
     <Content Include="Images\Menu\background.png" />
     <Content Include="Images\Menu\playbutton.png" />
@@ -182,6 +186,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Animation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Authors.xaml">
       <SubType>Designer</SubType>

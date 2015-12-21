@@ -13,28 +13,24 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
+
 namespace BalloonPop.Pages
 {
-    public sealed partial class Menu : Page
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
+    public sealed partial class Animation : Page
     {
-        public Menu()
+        public Animation()
         {
             this.InitializeComponent();
+            ShowStoryBoard.Begin();
         }
 
-        private void playButton_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Animation));
-        }
-
-        private void ShowScores(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(ResultPage));
-        }
-
-        private void authorsButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(Authors));
+            Frame.Navigate(typeof(MainPage));
         }
     }
 }
