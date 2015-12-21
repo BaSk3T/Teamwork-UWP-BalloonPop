@@ -36,14 +36,9 @@ namespace BalloonPop
         public MainPage()
         {
             this.InitializeComponent();
-            this.ViewModel = new MainPageViewModel();
-            this.DataContext = this.ViewModel;
             this.BalloonsInitiated = false;
-            
-            ////Accelerometer
-            //this.accelerometer = Accelerometer.GetDefault();
-            //this.accelerometer.ReportInterval = 50;
-            //this.accelerometer.ReadingChanged += new TypedEventHandler<Accelerometer, AccelerometerReadingChangedEventArgs>(ReadingChanged);
+
+
         }
 
         public bool BalloonsInitiated { get; set; }
@@ -248,6 +243,37 @@ namespace BalloonPop
                         this.ViewModel.NumberOfBalloonsAlive--;
                         this.StopHook();
                         this.ViewModel.PlayerVM.Score += 10;
+
+                        if (currentBalloon.HasChilren)
+                        {
+                            var list = new List<Balloon>();
+
+                            foreach (var balloon in this.ViewModel.Balloons.Balloons)
+                            {
+                                if (balloon.Popped)
+                                {
+                                    continue;
+                                }
+
+                                list.Add(balloon);
+                            }
+
+                            if (currentBalloon.GetType() == typeof(BiggestBlueBalloonViewModel))
+                            {
+                                list.Add(new BigBlueBalloonViewModel(currentBalloon.Left - 10, currentBalloon.Top + 10, true, true));
+                                list.Add(new BigBlueBalloonViewModel(currentBalloon.Left + 10, currentBalloon.Top + 10, true, false));
+                            }
+                            else if (currentBalloon.GetType() == typeof(BigBlueBalloonViewModel))
+                            {
+                                list.Add(new MediumBlueBalloonViewModel(currentBalloon.Left - 10, currentBalloon.Top + 10, false, true));
+                                list.Add(new MediumBlueBalloonViewModel(currentBalloon.Left + 10, currentBalloon.Top + 10, false, false));
+                            }
+                            
+                            this.ViewModel.Balloons.Balloons = list;
+
+                            this.ViewModel.NumberOfBalloonsAlive += 2;
+                            break;
+                        }
                     }
                 }
 
@@ -355,8 +381,30 @@ namespace BalloonPop
             {
                 velocity = BigBlueBalloonViewModel.Velocity;
             }
+            else if (typeof(MediumBlueBalloonViewModel) == balloon.GetType())
+            {
+                velocity = MediumBlueBalloonViewModel.Velocity;
+            }
             
             return velocity;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var joystickOn = (bool)e.Parameter;
+
+            this.ViewModel = new MainPageViewModel(joystickOn);
+            
+
+            if (!joystickOn)
+            {
+                //accelerometer
+                this.accelerometer = Accelerometer.GetDefault();
+                this.accelerometer.ReportInterval = 50;
+                this.accelerometer.ReadingChanged += new TypedEventHandler<Accelerometer, AccelerometerReadingChangedEventArgs>(ReadingChanged);
+            }
+
+            this.DataContext = this.ViewModel;
         }
     }
 }

@@ -28,9 +28,18 @@ namespace BalloonPop.Pages
             ShowStoryBoard.Begin();
         }
 
+        private bool JoystickOn { get; set; }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(MainPage));
+            Frame.Navigate(typeof(MainPage), this.JoystickOn);
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var joystickOn = (bool)e.Parameter;
+
+            this.JoystickOn = joystickOn;
         }
     }
 }

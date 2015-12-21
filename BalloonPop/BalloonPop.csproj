@@ -129,6 +129,7 @@
     <Compile Include="ViewModels\GameObjects\Balloons\Balloon.cs" />
     <Compile Include="ViewModels\GameObjects\Balloons\BigBlueBalloonViewModel.cs" />
     <Compile Include="ViewModels\GameObjects\Balloons\BiggestBlueBalloonViewModel.cs" />
+    <Compile Include="ViewModels\GameObjects\Balloons\MediumBlueBalloonViewModel.cs" />
     <Compile Include="ViewModels\GameObjects\GameMovableObject.cs" />
     <Compile Include="ViewModels\GameObjects\Players\PlayerViewModel.cs" />
     <Compile Include="ViewModels\GameObjects\Weapons\HookViewModel.cs" />
@@ -152,6 +153,7 @@
     <Content Include="Images\Menu\playbutton.png" />
     <Content Include="Images\Sprites\Balloons\Blue\big.png" />
     <Content Include="Images\Sprites\Balloons\Blue\biggest.png" />
+    <Content Include="Images\Sprites\Balloons\Blue\medium.png" />
     <Content Include="Images\Sprites\Player\right0.png" />
     <Content Include="Images\Sprites\Player\right1.png" />
     <Content Include="Images\Sprites\Player\right2.png" />

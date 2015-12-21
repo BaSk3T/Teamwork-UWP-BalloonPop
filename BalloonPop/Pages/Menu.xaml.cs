@@ -20,11 +20,14 @@ namespace BalloonPop.Pages
         public Menu()
         {
             this.InitializeComponent();
+            this.JoystickOn = true;
         }
+
+        private bool JoystickOn { get; set; }
 
         private void playButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Animation));
+            this.Frame.Navigate(typeof(Animation), this.JoystickOn);
         }
 
         private void ShowScores(object sender, RoutedEventArgs e)
@@ -35,6 +38,20 @@ namespace BalloonPop.Pages
         private void authorsButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Authors));
+        }
+
+        private void TurnJoystickOn(object sender, RoutedEventArgs e)
+        {
+            this.JoystickOn = !this.JoystickOn;
+
+            if (this.JoystickOn)
+            {
+                this.TurnJoystickOnButton.Content = "Joystick: On";
+            }
+            else
+            {
+                this.TurnJoystickOnButton.Content = "Joystick: Off";
+            }
         }
     }
 }

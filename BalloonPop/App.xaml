@@ -21,5 +21,6 @@
         <ImageSource x:Key="Hook1">/Images/Sprites/Weapons/Hook/1.png</ImageSource>
         <ImageSource x:Key="BiggestBlueBalloon">/Images/Sprites/Balloons/Blue/biggest.png</ImageSource>
         <ImageSource x:Key="BigBlueBalloon">/Images/Sprites/Balloons/Blue/big.png</ImageSource>
+        <ImageSource x:Key="MediumBlueBalloon">/Images/Sprites/Balloons/Blue/medium.png</ImageSource>
     </Application.Resources>
 </Application>

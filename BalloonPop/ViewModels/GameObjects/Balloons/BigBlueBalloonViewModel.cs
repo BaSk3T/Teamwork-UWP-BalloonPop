@@ -13,10 +13,15 @@ namespace BalloonPop.ViewModels.GameObjects.Balloons
         private const string SpriteName = "BigBlueBalloon";
 
         public const double Size = 40;
-        public const double Velocity = -17.5;
+        public const double Velocity = -18.5;
 
-        public BigBlueBalloonViewModel()
+        public BigBlueBalloonViewModel(double left, double top, bool hasChildren, bool goingLeft)
         {
+            this.Left = left;
+            this.Top = top;
+            this.HasChilren = hasChildren;
+            this.GoingLeft = goingLeft;
+
             this.LoadSprites();
             this.CurrentSprite = this.Sprite;
         }

@@ -118,8 +118,8 @@
       <RootProperty Name="Background" />
       <RootProperty Name="Height" />
       <RootProperty Name="Foreground" />
-      <RootProperty Name="Template" />
       <RootProperty Name="FontWeight" />
+      <RootProperty Name="Template" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">

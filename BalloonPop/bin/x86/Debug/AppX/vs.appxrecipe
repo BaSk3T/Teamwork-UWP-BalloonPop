@@ -22,13 +22,13 @@
     <AppXManifest Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-21T09:15:02.398</Modified>
+      <Modified>2015-12-21T11:51:40.369</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\bin\x86\Debug\BalloonPop.exe">
       <PackagePath>entrypoint\BalloonPop.exe</PackagePath>
-      <Modified>2015-12-21T09:15:01.862</Modified>
+      <Modified>2015-12-21T11:51:39.925</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\.nuget\packages\Microsoft.ApplicationInsights\1.0.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -498,6 +498,10 @@
       <PackagePath>Images\Sprites\Balloons\Blue\biggest.png</PackagePath>
       <Modified>2015-12-20T23:33:56.328</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Sprites\Balloons\Blue\medium.png">
+      <PackagePath>Images\Sprites\Balloons\Blue\medium.png</PackagePath>
+      <Modified>2015-12-21T11:32:49.840</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Sprites\Player\right0.png">
       <PackagePath>Images\Sprites\Player\right0.png</PackagePath>
       <Modified>2015-12-20T23:33:56.340</Modified>
@@ -590,7 +594,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\bin\x86\Debug\BalloonPop.xr.xml">
       <PackagePath>BalloonPop.xr.xml</PackagePath>
-      <Modified>2015-12-21T08:54:23.703</Modified>
+      <Modified>2015-12-21T10:53:19.034</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -598,11 +602,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-12-21T08:57:50.410</Modified>
+      <Modified>2015-12-21T11:37:03.392</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\bin\x86\Debug\Core\BalloonPop.exe">
       <PackagePath>BalloonPop.exe</PackagePath>
-      <Modified>2015-12-21T09:15:02.386</Modified>
+      <Modified>2015-12-21T11:51:40.363</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

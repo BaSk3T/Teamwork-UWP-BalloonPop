@@ -372,6 +372,9 @@
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Sprites\Balloons\Blue\biggest.png">
       <PackagePath>Images\Sprites\Balloons\Blue\biggest.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Sprites\Balloons\Blue\medium.png">
+      <PackagePath>Images\Sprites\Balloons\Blue\medium.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\BaSk3T\Desktop\Teamwork-WUP-BalloonPop\BalloonPop\Images\Sprites\Player\right0.png">
       <PackagePath>Images\Sprites\Player\right0.png</PackagePath>
     </AppxPackagedFile>

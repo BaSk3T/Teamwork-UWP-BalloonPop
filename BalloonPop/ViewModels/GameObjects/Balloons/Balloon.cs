@@ -10,7 +10,7 @@ namespace BalloonPop.ViewModels.GameObjects.Balloons
     {
         public const double SideVelocity = 7.0;
 
-        protected Balloon()
+        public Balloon()
         {
             this.Visible = true;
             this.Popped = false;
@@ -20,5 +20,7 @@ namespace BalloonPop.ViewModels.GameObjects.Balloons
         public bool Popped { get; set; }
 
         public double CurrentVelocity { get; set; }
+
+        public bool HasChilren { get; set; }
     }
 }

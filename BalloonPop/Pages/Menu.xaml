@@ -13,6 +13,16 @@
             <ImageBrush ImageSource="../Images/Menu/background.png"/>
         </Canvas.Background>
 
+        <Button Name="TurnJoystickOnButton"
+                Content="Joystick: On"
+                Foreground="White"
+                Width="200"
+                Height="30"
+                Click="TurnJoystickOn"
+                Canvas.Top="20"
+                Canvas.Left="140"
+                FontWeight="Black"/>
+
         <!--Play Button-->
         <Button Name="playButton" 
                 Height="200" 

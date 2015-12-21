@@ -215,7 +215,6 @@ namespace BalloonPop.BalloonPop_XamlTypeInfo
         private object Activate_2_Joystick() { return new global::BalloonPop.CustomControls.Joystick(); }
         private object Activate_6_BindingHelper() { return new global::BalloonPop.Helpers.BindingHelper(); }
         private object Activate_9_MainPage() { return new global::BalloonPop.MainPage(); }
-        private object Activate_12_MainPageViewModel() { return new global::BalloonPop.ViewModels.MainPageViewModel(); }
         private object Activate_13_ViewModelBase() { return new global::BalloonPop.ViewModels.ViewModelBase(); }
         private object Activate_15_Animation() { return new global::BalloonPop.Pages.Animation(); }
         private object Activate_16_Authors() { return new global::BalloonPop.Pages.Authors(); }

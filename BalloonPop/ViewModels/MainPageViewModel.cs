@@ -12,17 +12,19 @@ namespace BalloonPop.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
-        public MainPageViewModel()
+        public MainPageViewModel(bool joystickOn)
         {
-            this.JoystickVM = new JoystickViewModel();
+            if (joystickOn)
+            {
+                this.JoystickVM = new JoystickViewModel();
+            }
 
             this.HookVM = new HookViewModel();
 
             this.PlayerVM = new PlayerViewModel();
 
             this.Balloons = new AllBalloons();
-            this.Balloons.Add(new BiggestBlueBalloonViewModel { Left = 200, Top = 10 });
-            this.Balloons.Add(new BiggestBlueBalloonViewModel { Left = 150, Top = 10, GoingLeft = true });
+            this.Balloons.Add(new BiggestBlueBalloonViewModel(150, 10, true, true));
             this.NumberOfBalloonsAlive = this.Balloons.Balloons.Count;
         }
 
@@ -122,6 +124,10 @@ namespace BalloonPop.ViewModels
             else if (typeof(BigBlueBalloonViewModel) == balloon.GetType())
             {
                 sizeOfBalloon = BigBlueBalloonViewModel.Size;
+            }
+            else if (typeof(MediumBlueBalloonViewModel) == balloon.GetType())
+            {
+                sizeOfBalloon = MediumBlueBalloonViewModel.Size;
             }
 
             return sizeOfBalloon;

@@ -13,8 +13,18 @@
             <ImageBrush ImageSource="../Images/Menu/background.png"/>
         </Canvas.Background>
 
+        <Button x:ConnectionId='1' Name="TurnJoystickOnButton"
+                Content="Joystick: On"
+                Foreground="White"
+                Width="200"
+                Height="30"
+                                      
+                Canvas.Top="20"
+                Canvas.Left="140"
+                FontWeight="Black"/>
+
         <!--Play Button-->
-        <Button x:ConnectionId='1' Name="playButton" 
+        <Button x:ConnectionId='2' Name="playButton" 
                 Height="200" 
                 Width="200" 
                 Canvas.Left="135" 
@@ -28,7 +38,7 @@
         </Button>
 
         <!--Records buttons-->
-        <Button x:ConnectionId='2' Name="ScoresButton" 
+        <Button x:ConnectionId='3' Name="ScoresButton" 
                 Height="35" 
                 Width="200" 
                 Canvas.Left="20" 
@@ -40,7 +50,7 @@
                                   />
 
         <!--Authors button -->
-        <Button x:ConnectionId='3' Name="authorsButton" 
+        <Button x:ConnectionId='4' Name="authorsButton" 
                 Height="35" 
                 Width="200" 
                 Canvas.Left="240" 

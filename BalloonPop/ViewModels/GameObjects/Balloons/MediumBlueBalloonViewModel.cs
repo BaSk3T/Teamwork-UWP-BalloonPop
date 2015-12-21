@@ -3,14 +3,14 @@
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Media.Imaging;
 
-    public class BiggestBlueBalloonViewModel : Balloon
+    public class MediumBlueBalloonViewModel : Balloon
     {
-        private const string SpriteName = "BiggestBlueBalloon";
+        private const string SpriteName = "MediumBlueBalloon";
 
-        public const double Size = 60;
-        public const double Velocity = -20.5;
+        public const double Size = 25;
+        public const double Velocity = -16.5;
 
-        public BiggestBlueBalloonViewModel(double left, double top, bool hasChildren, bool goingLeft)
+        public MediumBlueBalloonViewModel(double left, double top, bool hasChildren, bool goingLeft)
         {
             this.Left = left;
             this.Top = top;
