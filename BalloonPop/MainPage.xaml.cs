@@ -303,6 +303,8 @@ namespace BalloonPop
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
+                this.InitializePlayerMoveAnimationTimerTick();
+
                 if (!this.BalloonsInitiated)
                 {
                     this.ViewModel.PlayerVM.CanFire = true;
