@@ -162,6 +162,11 @@ namespace BalloonPop
             {
                 foreach (var currentBalloon in this.ViewModel.Balloons.Balloons)
                 {
+                    if (this.ViewModel.NumberOfBalloonsAlive == 0)
+                    {
+                        this.EndGame();
+                    }
+
                     if (currentBalloon.Popped)
                     {
                         continue;
@@ -171,7 +176,6 @@ namespace BalloonPop
 
                     if (this.ViewModel.IsPlayerDestroyed(currentBalloon))
                     {
-                        this.ViewModel.PlayerVM.IsAlive = false;
                         fallTimer.Stop();
                         this.EndGame();
                     }
@@ -207,12 +211,12 @@ namespace BalloonPop
             // Creates move animation
             this.PlayerMovementTimer.Tick += (s, ev) =>
             {
-                if (this.ViewModel.PlayerVM.GoingLeft && this.ViewModel.PlayerVM.IsMoving)
+                if (this.ViewModel.PlayerVM.GoingLeft && this.ViewModel.PlayerVM.IsMoving && this.ViewModel.PlayerVM.IsAlive)
                 {
                     this.ViewModel.MovePlayerLeft();
 
                 }
-                else if (!this.ViewModel.PlayerVM.GoingLeft && this.ViewModel.PlayerVM.IsMoving)
+                else if (!this.ViewModel.PlayerVM.GoingLeft && this.ViewModel.PlayerVM.IsMoving && this.ViewModel.PlayerVM.IsAlive)
                 {
                     this.ViewModel.MovePlayerRight();
                 }
@@ -241,6 +245,7 @@ namespace BalloonPop
                     {
                         currentBalloon.Popped = true;
                         currentBalloon.Visible = false;
+                        this.ViewModel.NumberOfBalloonsAlive--;
                         this.StopHook();
                         this.ViewModel.PlayerVM.Score += 10;
                     }
@@ -311,6 +316,7 @@ namespace BalloonPop
         private void EndGame()
         {
             this.ViewModel.PlayerVM.CanFire = false;
+            this.ViewModel.PlayerVM.IsAlive = false;
             this.NameOfPlayer.Visibility = Visibility.Visible;
             this.NameSubmiter.Visibility = Visibility.Visible;
         }

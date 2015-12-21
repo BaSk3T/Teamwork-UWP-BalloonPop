@@ -23,7 +23,11 @@ namespace BalloonPop.ViewModels
             this.Balloons = new AllBalloons();
             this.Balloons.Add(new BiggestBlueBalloonViewModel { Left = 200, Top = 10 });
             this.Balloons.Add(new BiggestBlueBalloonViewModel { Left = 150, Top = 10, GoingLeft = true });
+            this.NumberOfBalloonsAlive = this.Balloons.Balloons.Count;
         }
+
+        public int NumberOfBalloonsAlive { get; set; }
+
         public JoystickViewModel JoystickVM { get; set; }
 
         public HookViewModel HookVM { get; set; }
@@ -85,8 +89,9 @@ namespace BalloonPop.ViewModels
             var hookLeft = this.HookVM.Left;
             var hookTop = this.HookVM.Top;
 
-            return ((balloonLeft <= hookLeft && hookLeft + HookViewModel.ProjectileWidthConst <= balloonLeft + sizeOfBalloon)
-                    && (hookTop <= balloonTop && balloonTop + sizeOfBalloon <= hookTop + HookViewModel.ProjectileHeightConst));
+            return (((balloonLeft <= hookLeft && hookLeft <= balloonLeft + sizeOfBalloon)
+                || (balloonLeft <=  hookLeft && hookLeft <= balloonLeft + sizeOfBalloon))
+                    && (balloonTop <= hookTop && hookTop <= balloonTop + sizeOfBalloon));
         }
 
         public bool IsPlayerDestroyed(Balloon balloon)
