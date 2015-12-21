@@ -37,8 +37,6 @@ namespace BalloonPop
         {
             this.InitializeComponent();
             this.BalloonsInitiated = false;
-
-
         }
 
         public bool BalloonsInitiated { get; set; }
@@ -303,15 +301,15 @@ namespace BalloonPop
 
         async private void ReadingChanged(object Accelerometer, AccelerometerReadingChangedEventArgs e)
         {
-            if (!this.BalloonsInitiated)
-            {
-                this.ViewModel.PlayerVM.CanFire = true;
-                this.BalloonsInitiated = true;
-                this.StartBalloons();
-            }
-
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
+                if (!this.BalloonsInitiated)
+                {
+                    this.ViewModel.PlayerVM.CanFire = true;
+                    this.BalloonsInitiated = true;
+                    this.StartBalloons();
+                }
+
                 AccelerometerReading reading = e.Reading;
 
                 var x = reading.AccelerationX;
